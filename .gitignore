@@ -4,6 +4,7 @@ coverage/
 **bundle.js.LICENSE.txt
 node_modules/
 *.log
+**config.js
 
 # OS generated files
 .DS_Store

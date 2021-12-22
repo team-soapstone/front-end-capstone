@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack --config ./webpack.config.js  -w",
+    "react-dev": "webpack --config ./webpack.config.js --mode=development -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "linter": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
@@ -37,6 +37,7 @@
     "webpack-dev-server": "^4.7.1"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0"
