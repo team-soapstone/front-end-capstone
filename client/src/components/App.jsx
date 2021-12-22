@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import NavBar from './NavBar.jsx';
+import Ratings from './Ratings.jsx';
 import API_KEY from '../../../config.js';
 
 class App extends React.Component {
@@ -9,15 +10,12 @@ class App extends React.Component {
 
     this.state = {
       currentProduct: {},
-      productReview: {}
+      productRatings: {},
     };
   }
 
   componentDidMount() {
-    // console.log(this.handleGetProducts());
-    // this.setState({
-    //  currentProduct: 
-    // })
+    this.handleGetProducts();
   }
 
   handleGetProducts() {
@@ -27,19 +25,27 @@ class App extends React.Component {
           currentProduct: response.data[0]
         })
       })
+      .then(() => {
+        this.handleGetRatings(this.state.currentProduct.id);
+      })
       .catch((error) => {
         console.log(error); // do something with error or throw error
       })
-      .then(() => {
-        console.log(this.state);
+  }
+
+  handleGetRatings(id) {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/meta`, { headers: {Authorization: API_KEY}, params: {product_id: id}})
+      .then((response) => {
+        console.log(response.data.ratings);
+        this.setState({
+          productRatings: response.data.ratings
+        })
+      })
+      .catch((error) => {
+        console.log(error); // do something with error or throw error
       })
   }
-  
-
-
-
-
-  
+    
   render() {
     return (
       <div>
@@ -47,6 +53,7 @@ class App extends React.Component {
         <h1>
           Hello
         </h1>
+        <Ratings productRatings={this.state.productRatings}/>
       </div>
     );
   }
