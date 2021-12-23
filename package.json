@@ -6,8 +6,12 @@
   "scripts": {
     "start": "live-server client/dist",
     "react-dev": "webpack --config ./webpack.config.js --mode=development -w",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "linter": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
+    "test": "jest --env=jsdom"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -25,12 +29,15 @@
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
     "@hot-loader/react-dom": "^17.0.1",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "babel-jest": "^27.4.5",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "eslint": "^8.5.0",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react": "^7.28.0",
     "jest": "^27.4.5",
+    "react-test-render": "1.1.2",
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.65.0",
@@ -39,8 +46,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-hot-loader": "^4.13.0"
+    "react": "^15.6.0",
+    "react-dom": "^15.6.0"
   }
 }

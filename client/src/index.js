@@ -1,7 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App.jsx";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App.jsx';
 
-
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App />, mountNode);
+ReactDOM.render(<App />, document.getElementById('app'));
