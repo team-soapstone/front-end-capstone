@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "live-server client/dist",
     "react-dev": "webpack --config ./webpack.config.js --mode=development -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "linter": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
