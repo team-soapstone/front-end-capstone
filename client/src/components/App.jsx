@@ -4,6 +4,8 @@ import NavBar from './NavBar.jsx';
 import Ratings from './Ratings.jsx';
 import API_KEY from '../../../config.js';
 
+import Overview from './Overview/Overview.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +56,7 @@ class App extends React.Component {
           Hello
         </h1>
         <Ratings productRatings={this.state.productRatings}/>
+        <Overview currentProduct={this.state.currentProduct}/>
       </div>
     );
   }
