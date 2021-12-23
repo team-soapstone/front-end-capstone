@@ -3,6 +3,7 @@ import axios from 'axios';
 import NavBar from './NavBar.jsx';
 import Ratings from './Ratings.jsx';
 import API_KEY from '../../../config.js';
+import QuestionView from './QA/QuestionView.jsx';
 
 import Overview from './Overview/Overview.jsx';
 
@@ -47,7 +48,7 @@ class App extends React.Component {
         console.log(error); // do something with error or throw error
       })
   }
-    
+
   render() {
     return (
       <div>
@@ -56,6 +57,7 @@ class App extends React.Component {
           Hello
         </h1>
         <Ratings productRatings={this.state.productRatings}/>
+        <QuestionView />
         <Overview currentProduct={this.state.currentProduct}/>
       </div>
     );
