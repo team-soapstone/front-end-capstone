@@ -16,12 +16,12 @@ class QuestionView extends React.Component {
 
   render() {
     return (
-      <>
+      <div>
       <QuestionSearch />
       <QuestionList />
       <AddQuestion />
       <AddAnswer />
-      </>
+      </div>
     );
   }
 }
