@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Ratings = ({ productRatings }) => {
-  const defaultRatings = { 0: '0', 1: '0', 2: '0', 3: '0', 4: '1', 5: '1'};
+  const defaultRatings = { 0: '1', 1: '0', 2: '0', 3: '0', 4: '0', 5: '0'};
   // == EDGE CASES == Do not change order
   // if product ratings object is undefined
   if (productRatings === undefined) {
@@ -25,7 +25,7 @@ const Ratings = ({ productRatings }) => {
     return ((Math.round(number * 4) / 4).toFixed(2));
   };
 
-  const starRenderer = (rating = 5) => {
+  const starRenderer = (rating = 0) => {
     rating = Number(rating);
     let filledStars = Math.floor(rating);
     let emptyStars = 5 - Math.ceil(rating);
@@ -38,17 +38,14 @@ const Ratings = ({ productRatings }) => {
       partialStar = '60%'
     } else {
       partialStar = '0'
-      emptyStars -= 1;
+      emptyStars !== 0 ? emptyStars -= 1 : null;
     }
-
-    // if filledStars is 0, .map will break
     const filledStarsRender = [...Array(filledStars)].map((star, idx) => {
       return (<span className='star' key={idx}>&#x2605;</span>)
     })
     const partialStyle = {
       '--width': partialStar
     };
-    // if emptyStars is 0, .map will break
     const emptyStarRender = [...Array(emptyStars)].map((star, idx) => {
       return (<span className='star' key={idx}>&#x2606;</span>)
     })
