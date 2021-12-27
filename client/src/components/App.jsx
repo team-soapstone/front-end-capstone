@@ -58,7 +58,7 @@ class App extends React.Component {
           Hello
         </h1>
         <Ratings productRatings={this.state.productRatings}/>
-        <QuestionView />
+        <QuestionView productId={this.state.currentProduct.id}/>
         <Overview currentProduct={this.state.currentProduct}/>
         <RatingsAndReviews />
       </div>
