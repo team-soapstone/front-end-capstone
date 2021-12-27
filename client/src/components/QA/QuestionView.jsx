@@ -12,8 +12,9 @@ class QuestionView extends React.Component {
 
     this.state = {
       currentProductId: 0,
-      currentProductQuestions: [],
-      showQuestions: 2
+      currentProductQuestions: null,
+      currentProductAnswers: '',
+      shownAnswers: 2
     };
   }
 
@@ -28,7 +29,7 @@ class QuestionView extends React.Component {
   }
 
   getCurrentQuestions(id) {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { headers: {Authorization: API_KEY}, params: {product_id: id, count: this.state.showQuestions}})
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { headers: {Authorization: API_KEY}, params: {product_id: id, count: this.state.shownQuestions}})
       .then((response) => {
         this.setState({
           currentProductQuestions: response.data.results
@@ -43,10 +44,14 @@ class QuestionView extends React.Component {
 
 
   render() {
+    if (!this.state.currentProductQuestions) {
+      return <div></div>
+    }
+
     return (
       <div data-testid='question-view'>
       <QuestionSearch />
-      <QuestionList questions={this.state.currentProductQuestions}/>
+      <QuestionList questions={this.state.currentProductQuestions} answerLimit={this.state.shownAnswers}/>
       <AddQuestion />
       <AddAnswer />
       </div>

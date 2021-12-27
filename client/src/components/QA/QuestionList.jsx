@@ -4,7 +4,7 @@ import QuestionItem from './QuestionItem.jsx'
 const QuestionList = (props) => {
   return (
     <div>
-      <QuestionItem />
+      <QuestionItem questions={props.questions} answerLimit={props.answerLimit}/>
     </div>
   );
 }
