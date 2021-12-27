@@ -16,7 +16,7 @@ class QuestionView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div data-testid='question-view'>
       <QuestionSearch />
       <QuestionList />
       <AddQuestion />
