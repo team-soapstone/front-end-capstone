@@ -6,6 +6,7 @@ import API_KEY from '../../../config.js';
 import QuestionView from './QA/QuestionView.jsx';
 
 import Overview from './Overview/Overview.jsx';
+import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -59,6 +60,7 @@ class App extends React.Component {
         <Ratings productRatings={this.state.productRatings}/>
         <QuestionView />
         <Overview currentProduct={this.state.currentProduct}/>
+        <RatingsAndReviews />
       </div>
     );
   }
