@@ -23,7 +23,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <h1>
-          Hello
+          NavBar
         </h1>
       </div>
     );

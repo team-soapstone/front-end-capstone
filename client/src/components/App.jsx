@@ -13,8 +13,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      currentProduct: {},
-      productRatings: {},
+      currentProduct: '',
+      productRatings: '',
     };
   }
 
@@ -54,12 +54,9 @@ class App extends React.Component {
     return (
       <div>
         <NavBar />
-        <h1>
-          Hello
-        </h1>
         <Ratings productRatings={this.state.productRatings}/>
         <QuestionView />
-        <Overview currentProduct={this.state.currentProduct}/>
+        {this.state.currentProduct && this.state.productRatings && <Overview currentProduct={this.state.currentProduct}/>}
         <RatingsAndReviews />
       </div>
     );
