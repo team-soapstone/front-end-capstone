@@ -5,6 +5,7 @@ const QuestionItem = (props) => {
     <div>
       {
         props.questions.map((question) => {
+          console.log(question);
           return (
             <div key={question.question_id}>
               <div>Q: {question.question_body}</div>

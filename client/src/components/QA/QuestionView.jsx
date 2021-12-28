@@ -14,12 +14,14 @@ class QuestionView extends React.Component {
       currentProductId: 0,
       currentProductQuestions: null,
       currentProductAnswers: '',
-      shownAnswers: 2
+      shownAnswers: 2,
     };
+
+    this.searchQuestionList = this.searchQuestionList.bind(this);
   }
 
-  componentDidUpdate() {
-    if (this.state.currentProductId !== this.props.productId) {
+  componentDidUpdate(prevProps) {
+    if (this.props.productId !== prevProps.productId) {
       this.setState({
         currentProductId: this.props.productId
       });
@@ -27,6 +29,7 @@ class QuestionView extends React.Component {
       this.getCurrentQuestions(this.props.productId);
     }
   }
+
 
   getCurrentQuestions(id) {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { headers: {Authorization: API_KEY}, params: {product_id: id, count: this.state.shownQuestions}})
@@ -36,11 +39,19 @@ class QuestionView extends React.Component {
         })
       })
       .catch((err) => {
-        console.log(err);
+        throw new err;
       });
   }
 
+  searchQuestionList(term) {
+      let questionListCopy = this.state.currentProductQuestions.filter((question) => {
+        return question.question_body.toLowerCase().includes(term.toLowerCase());
+      })
 
+      this.setState({
+        currentProductQuestions: questionListCopy
+      });
+  }
 
 
   render() {
@@ -50,7 +61,7 @@ class QuestionView extends React.Component {
 
     return (
       <div data-testid='question-view'>
-      <QuestionSearch />
+      <QuestionSearch onClick={this.searchQuestionList}/>
       <QuestionList questions={this.state.currentProductQuestions} answerLimit={this.state.shownAnswers}/>
       <AddQuestion />
       <AddAnswer />
