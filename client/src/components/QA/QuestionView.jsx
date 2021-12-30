@@ -17,8 +17,8 @@ class QuestionView extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-    if (this.state.currentProductId !== this.props.productId) {
+  componentDidUpdate(prevProps) {
+    if (this.props.productId !== prevProps.productId) {
       this.setState({
         currentProductId: this.props.productId
       });
@@ -35,7 +35,7 @@ class QuestionView extends React.Component {
         })
       })
       .catch((err) => {
-        console.log(err);
+        throw new err;
       });
   }
 
