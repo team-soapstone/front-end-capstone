@@ -41,7 +41,7 @@ class QuestionView extends React.Component {
         })
       })
       .catch((err) => {
-        throw new err;
+        throw err;
       });
   }
 
