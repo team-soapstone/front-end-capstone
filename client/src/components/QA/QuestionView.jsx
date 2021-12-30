@@ -13,6 +13,7 @@ class QuestionView extends React.Component {
     this.state = {
       currentProductId: 0,
       currentProductQuestions: null,
+      searchedQuestions: null,
       currentProductAnswers: '',
       shownAnswers: 2,
     };
@@ -35,7 +36,8 @@ class QuestionView extends React.Component {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { headers: {Authorization: API_KEY}, params: {product_id: id, count: this.state.shownQuestions}})
       .then((response) => {
         this.setState({
-          currentProductQuestions: response.data.results
+          currentProductQuestions: response.data.results,
+          searchedQuestions: response.data.results
         })
       })
       .catch((err) => {
@@ -48,9 +50,15 @@ class QuestionView extends React.Component {
         return question.question_body.toLowerCase().includes(term.toLowerCase());
       })
 
-      this.setState({
-        currentProductQuestions: questionListCopy
-      });
+      if (term === '') {
+        this.setState({
+          searchedQuestions: this.state.currentProductQuestions
+        })
+      } else {
+        this.setState({
+          searchedQuestions: questionListCopy
+        });
+      }
   }
 
 
@@ -62,7 +70,7 @@ class QuestionView extends React.Component {
     return (
       <div data-testid='question-view'>
       <QuestionSearch onClick={this.searchQuestionList}/>
-      <QuestionList questions={this.state.currentProductQuestions} answerLimit={this.state.shownAnswers}/>
+      <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers}/>
       <AddQuestion />
       <AddAnswer />
       </div>
