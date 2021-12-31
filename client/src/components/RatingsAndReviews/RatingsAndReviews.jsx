@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import API_KEY from '../../../../config.js';
-import NewReview from './NewReview.jsx';
+
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
@@ -60,8 +60,7 @@ class RatingsAndReviews extends React.Component {
         <h3 className="widgetHeader">RATINGS & REVIEWS</h3>
         <RatingBreakdown productRatings={productRatings}/>
         <ProductBreakdown productRatings={productRatings}/>
-        <ReviewList reviews={this.state.reviews}/>
-        <NewReview />
+        <ReviewList reviews={this.state.reviews.results}/>
       </div>
     );
   }

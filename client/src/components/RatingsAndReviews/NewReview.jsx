@@ -28,7 +28,7 @@ class NewReview extends React.Component {
   render() {
     return (
       <div>
-        New Review Button
+        ADD A REVIEW +
       </div>
     );
   }
