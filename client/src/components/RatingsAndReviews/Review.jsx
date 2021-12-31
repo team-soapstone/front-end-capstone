@@ -14,7 +14,7 @@ const Review = ({ review }) => {
       {date}
       {summary}
       {body}
-      {photos}
+      {/* {photos} */}
       {recommend}
       {response}
       {helpfullness}
