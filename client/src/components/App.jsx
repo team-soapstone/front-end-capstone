@@ -30,7 +30,6 @@ class App extends React.Component {
         })
       })
       .then(() => {
-        console.log('current product id', this.state.currentProduct.id);
         this.handleGetRatings(this.state.currentProduct.id);
       })
       .catch((error) => {
@@ -41,13 +40,11 @@ class App extends React.Component {
   handleGetRatings(id) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/meta`, { headers: {Authorization: API_KEY}, params: {product_id: id}})
       .then((response) => {
-        console.log('current response data', response.data.ratings);
         this.setState({
           productRatings: response.data.ratings
         })
       })
       .catch((error) => {
-        console.log('test')
         throw error;
       })
   }
