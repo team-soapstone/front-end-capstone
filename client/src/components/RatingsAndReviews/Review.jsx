@@ -6,8 +6,10 @@ const Review = () => {
 
   return (
     <div>
-      Review - Dynamically render each review
-      <Ratings />
+      <div>
+        Review - Dynamically render each review
+        <Ratings />
+      </div>
     </div>
   );
 };

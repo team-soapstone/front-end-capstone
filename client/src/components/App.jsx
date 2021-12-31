@@ -56,7 +56,10 @@ class App extends React.Component {
         <Ratings productRatings={this.state.productRatings}/>
         <QuestionView productId={this.state.currentProduct.id}/>
         <Overview currentProduct={this.state.currentProduct}/>
-        <RatingsAndReviews />
+        <RatingsAndReviews
+          currentProduct={this.state.currentProduct}
+          productRatings={this.state.productRatings}
+        />
       </div>
     );
   }
