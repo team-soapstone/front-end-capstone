@@ -12,26 +12,44 @@ import ReviewList from './ReviewList.jsx';
 // create a handleFilter function that will change state (by filter for specific star)
   // make sure not to remake GET request
 
+// why is ratings count differetn from total ratings
 class RatingsAndReviews extends React.Component {
-  constructor({props}) {
+  constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: {},
     };
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentProduct !== prevProps.currentProduct) {
-      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews', { headers: {Authorization: API_KEY}, params: {product_id: this.props.currentProduct.id}})
+    // Check on product rating as it is the latter promise that gets resolved in App
+    if (this.props.productRatings !== prevProps.productRatings) {
+      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      {
+        headers: {Authorization: API_KEY},
+        params: {
+          product_id: this.props.currentProduct.id,
+          count: this.getTotalReviewsCount()
+        }
+      })
       .then((response) => {
         this.setState({
-          reviews: response.data.results
+          reviews: response.data
         })
       })
       .catch((error) => {
         throw error;
       })
     }
+  }
+
+  getTotalReviewsCount() {
+    const productRatings = this.props.productRatings.ratings;
+    let totalReviews = 0;
+    for (let count in productRatings) {
+      totalReviews += Number(productRatings[count]);
+    }
+    return totalReviews;
   }
 
   render() {
