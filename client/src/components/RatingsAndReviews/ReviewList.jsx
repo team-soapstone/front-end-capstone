@@ -16,7 +16,8 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       reviewsExist: false,
-      reviewsRendered: 2
+      reviewsRendered: 2,
+      allReviewsRendered: false
     };
     this.handleSeeMoreReviews = this.handleSeeMoreReviews.bind(this);
   }
@@ -36,6 +37,10 @@ class ReviewList extends React.Component {
     })
   }
 
+  // check if all reviews have been rendered, set state and remove button
+
+  // render the reviews
+
   render() {
     console.log('Reviews ', this.props.reviews);
     let list;
@@ -50,7 +55,7 @@ class ReviewList extends React.Component {
     }
 
     return (
-      <div>
+      <div className='reviewList'>
         {list}
         <button className='buttons' onClick={this.handleSeeMoreReviews}>MORE REVIEWS</button>
         <button className='buttons'><NewReview /></button>
