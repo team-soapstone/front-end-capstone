@@ -43,8 +43,6 @@ describe('App Component', () => {
   })
 
   it('Upon mounting, should update state for current product and current review', () => {
-    console.log('test state', wrapper.state());
-
     expect(wrapper.state().currentProduct).toEqual(exampleProducts[0]);
     expect(wrapper.state().productRatings).toEqual(exampleReview.ratings);
     /**
