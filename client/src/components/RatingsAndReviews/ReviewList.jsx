@@ -32,17 +32,20 @@ class ReviewList extends React.Component {
 
   handleSeeMoreReviews() {
     let counter = this.state.reviewsRendered
-    this.setState({
-      reviewsRendered: counter + 2
-    })
+    if (this.state.reviewsRendered > this.props.reviews.length) {
+      this.setState({
+        allReviewsRendered: true
+      })
+    } else {
+      this.setState({
+        reviewsRendered: counter + 2
+      })
+    }
   }
-
-  // check if all reviews have been rendered, set state and remove button
-
-  // render the reviews
 
   render() {
     console.log('Reviews ', this.props.reviews);
+    // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist === false) {
       list = <div></div>
@@ -54,10 +57,18 @@ class ReviewList extends React.Component {
       })
     }
 
+    // conditional for more review button to render
+    let moreReview;
+    if (this.state.allReviewsRendered === false) {
+      moreReview = <button className='buttons' onClick={this.handleSeeMoreReviews}>MORE REVIEWS</button>
+    } else {
+      moreReview = <div></div>
+    }
+
     return (
       <div className='reviewList'>
         {list}
-        <button className='buttons' onClick={this.handleSeeMoreReviews}>MORE REVIEWS</button>
+        {moreReview}
         <button className='buttons'><NewReview /></button>
       </div>
     );
