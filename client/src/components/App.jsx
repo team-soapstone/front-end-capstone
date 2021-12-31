@@ -41,7 +41,7 @@ class App extends React.Component {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/meta`, { headers: {Authorization: API_KEY}, params: {product_id: id}})
       .then((response) => {
         this.setState({
-          productRatings: response.data.ratings
+          productRatings: response.data
         })
       })
       .catch((error) => {
