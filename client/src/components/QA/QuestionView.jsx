@@ -50,7 +50,7 @@ class QuestionView extends React.Component {
         return question.question_body.toLowerCase().includes(term.toLowerCase());
       })
 
-      if (term === '') {
+      if (term.length < 3) {
         this.setState({
           searchedQuestions: this.state.currentProductQuestions
         })
@@ -69,7 +69,7 @@ class QuestionView extends React.Component {
 
     return (
       <div data-testid='question-view'>
-      <QuestionSearch onClick={this.searchQuestionList}/>
+      <QuestionSearch onSearch={this.searchQuestionList}/>
       <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers}/>
       <AddQuestion />
       <AddAnswer />

@@ -5,28 +5,20 @@ class QuestionSearch extends React.Component {
     super(props);
 
     this.state = {
-      term: ''
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
   }
 
   onChange(e) {
-    this.setState({
-      term: e.target.value
-    })
+    this.props.onSearch(e.target.value);
   }
 
-  onClick() {
-    this.props.onClick(this.state.term);
-  }
 
   render() {
     return (
       <div>
-        <input type='text' placeholder='Search Questions...' value={this.state.term} onChange={this.onChange}/>
-        <button onClick={this.onClick}>Search</button>
+        <input type='text' placeholder='Have a question? Search for answers...' onChange={this.onChange}/>
       </div>
     );
   }
