@@ -42,7 +42,7 @@ class App extends React.Component {
       .then((response) => {
         console.log(response.data);
         this.setState({
-          productRatings: response.data.ratings
+          productRatings: response.data
         })
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ class App extends React.Component {
         <h1>
           Hello
         </h1>
-        <Ratings productRatings={this.state.productRatings}/>
+        <Ratings productRatings={this.state.productRatings.ratings}/>
         <QuestionView productId={this.state.currentProduct.id}/>
         <Overview currentProduct={this.state.currentProduct}/>
         <RatingsAndReviews

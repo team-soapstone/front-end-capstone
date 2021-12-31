@@ -29,13 +29,14 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { productRatings, currentProduct } = this.props;
     return (
       <div>
         <h3 className="widgetHeader">RATINGS & REVIEWS</h3>
         <RatingBreakdown productRatings={productRatings}/>
-        <ProductBreakdown />
-        <ReviewList />
+        <ProductBreakdown productRatings={productRatings}/>
+        <ReviewList reviews={this.state.reviews}/>
         <NewReview />
       </div>
     );

@@ -1,6 +1,8 @@
 import React from 'react';
 import Review from './Review.jsx';
 
+// low priority - implement a keyword search
+
 const ReviewList = () => {
 
 
