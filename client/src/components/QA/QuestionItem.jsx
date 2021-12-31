@@ -4,7 +4,7 @@ const QuestionItem = (props) => {
   return (
     <div>
       {
-        props.questions.map((question) => {
+        props.questions.slice(0, props.questionLimit).map((question) => {
           return (
             <div key={question.question_id}>
               <div>Q: {question.question_body}</div>

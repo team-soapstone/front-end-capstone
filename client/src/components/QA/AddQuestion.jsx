@@ -38,7 +38,7 @@ class AddQuestion extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.props.addQuestion(this.state);
   }
 
 

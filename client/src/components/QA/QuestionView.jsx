@@ -14,8 +14,11 @@ class QuestionView extends React.Component {
       currentProductId: 0,
       currentProductQuestions: null,
       currentProductAnswers: '',
+      shownQuestions: 4,
       shownAnswers: 2
     };
+
+    this.handleAddQuestion = this.handleAddQuestion.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -36,8 +39,14 @@ class QuestionView extends React.Component {
         })
       })
       .catch((err) => {
-        throw new err;
+        throw err;
       });
+  }
+
+  handleAddQuestion(question) {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { body: question.question, name: question.nickname, email: question.email, product_id: this.state.currentProductId}, { headers: {Authorization: API_KEY}})
+    .then(res => { console.log(res) })
+    .catch(err => { throw err; });
   }
 
 
@@ -51,8 +60,8 @@ class QuestionView extends React.Component {
     return (
       <div data-testid='question-view'>
       <QuestionSearch />
-      <QuestionList questions={this.state.currentProductQuestions} answerLimit={this.state.shownAnswers}/>
-      <AddQuestion />
+      <QuestionList questions={this.state.currentProductQuestions} answerLimit={this.state.shownAnswers} questionLimit={this.state.shownQuestions}/>
+      <AddQuestion addQuestion={this.handleAddQuestion}/>
       <AddAnswer />
       </div>
     );
