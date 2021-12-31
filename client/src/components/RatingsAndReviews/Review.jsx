@@ -3,14 +3,22 @@ import Ratings from '../Ratings.jsx';
 
 // pass in a number to ratings for it to render a star
 
-const Review = () => {
-
+const Review = ({ review }) => {
+  console.log(review);
+  const { reviewer_name, date, summary, body, photos, recommend, response, helpfullness } = review;
   return (
     <div>
-      <div>
-        Review - Dynamically render each review
-        <Ratings />
-      </div>
+      Review - Dynamically render each review
+      <Ratings />
+      {reviewer_name}
+      {date}
+      {summary}
+      {body}
+      {photos}
+      {recommend}
+      {response}
+      {helpfullness}
+
     </div>
   );
 };

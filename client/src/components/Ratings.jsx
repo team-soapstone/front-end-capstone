@@ -10,7 +10,6 @@ const Ratings = ({ productRatings }) => {
       denominator += Number(productRatings[star]);
     }
     let number = numerator / denominator;
-    console.log(number);
     return ((Math.round(number * 4) / 4).toFixed(2));
   };
 
