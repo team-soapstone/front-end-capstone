@@ -11,7 +11,17 @@
   "jest": {
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
-    }
+    },
+    "setupFilesAfterEnv": [
+      "./__tests__/setupTests.js"
+    ],
+    "testEnvironment": "enzyme",
+    "testEnvironmentOptions": {
+      "enzymeAdapter": "react15"
+    },
+    "modulePathIgnorePatterns": [
+      "./__tests__/setupTests.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -33,10 +43,13 @@
     "babel-jest": "^27.4.5",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-15": "^1.4.3",
     "eslint": "^8.5.0",
     "eslint-plugin-react": "^7.28.0",
     "jest": "^27.4.5",
-    "react-test-render": "1.1.2",
+    "jest-enzyme": "^7.1.2",
+    "regenerator-runtime": "^0.13.9",
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.65.0",

@@ -1,29 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const QuestionItem = (props) => {
+const QuestionItem = ({ question, answerLimit }) => {
   return (
     <div>
-      {
-        props.questions.slice(0, props.questionLimit).map((question) => {
-          return (
-            <div key={question.question_id}>
-              <div>Q: {question.question_body}</div>
-              <div>
-                {
-                  Object.keys(question.answers).slice(0, props.answerLimit).map((answerId) => {
-                    return (
-                      // eslint-disable-next-line react/jsx-key
-                      <p style={ {fontSize: '13px'} }>A: {question.answers[answerId].body}</p>
-                    );
-                  })
-                }
-              </div>
-            </div>
-          );
-        })
-      }
+      <div>Q: {question.question_body}</div>
+      <div>
+        {Object.keys(question.answers)
+          .slice(0, answerLimit)
+          .map((answerId) => {
+            return (
+              <p style={{ fontSize: "13px" }} key={answerId}>
+                A: {question.answers[answerId].body}
+              </p>
+            );
+          })}
+      </div>
     </div>
   );
-}
+};
 
 export default QuestionItem;
