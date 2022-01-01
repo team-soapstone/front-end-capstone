@@ -49,6 +49,7 @@ class AddQuestion extends React.Component {
         <h3>Add Question</h3>
         <textarea onChange={this.onChangeQuestion} value={this.state.question}/>
         <input type="text" className="nickname" placeholder="Nickname..." value={this.state.nickname} onChange={this.onChangeNickname}/>
+        <p style={{ fontSize: "8px", marginTop: '0' }}>For privacy reasons, do not use your full name or email address within nickname.</p>
         <input type="email" className="email" placeholder="Email..." value={this.state.email} onChange={this.onChangeEmail}/>
         <input type="submit" />
       </form>
