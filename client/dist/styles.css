@@ -28,3 +28,43 @@ body {
 .reviewList::-webkit-scrollbar {
   display: none;
 }
+
+/* 
+======================================
+OVERVIEW
+======================================
+*/
+.SelectedImageContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 542px;
+}
+
+.SelectedImageContainer button {
+  margin-top: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.SelectedImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ThumbnailContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 80px;
+}
+
+.ThumbnailImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 
+======================================
+*/
