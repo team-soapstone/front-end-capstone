@@ -1,13 +1,16 @@
 import React from 'react';
 import Ratings from '../Ratings.jsx';
 
-const Review = () => {
+// pass in a number to ratings for it to render a star
 
+const Review = () => {
 
   return (
     <div>
-      Review - Dynamically render each review
-      <Ratings />
+      <div>
+        Review - Dynamically render each review
+        <Ratings />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-
+// change ratings function to render stars based on a number from 0-5.
+// pull out utility function to calculate average.
 const Ratings = ({ productRatings }) => {
   let ratingAverage = (productRatings) => {
     let numerator = 0;
