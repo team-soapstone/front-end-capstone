@@ -40,7 +40,10 @@ const config = {
     'static': {
       directory: './client/dist'
     }
-  }
+  },
+  plugins: [
+    new MomentLocalesPlugins()
+  ]
 };
 
 module.exports = config;
