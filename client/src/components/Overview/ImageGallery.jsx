@@ -53,4 +53,5 @@ class ImageGallery extends React.Component {
   }
 }
 
+
 export default ImageGallery;
