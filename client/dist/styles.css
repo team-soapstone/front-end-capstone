@@ -13,18 +13,42 @@ body {
   color: #ccc;
 }
 
-.widgetHeader {
-  text-transform: uppercase;
-  font-size: 16px;
-  font-family: sans-serif, Arial, Helvetica;
-  font-weight: normal;
+/* 
+======================================
+OVERVIEW
+======================================
+*/
+.SelectedImageContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 542px;
 }
 
-.reviewList {
-  max-height: 500px;
-  overflow: scroll;
+.SelectedImageContainer button {
+  margin-top: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 25px;
 }
 
-.reviewList::-webkit-scrollbar {
-  display: none;
+.SelectedImage {
+  max-width: 100%;
+  max-height: 100%;
 }
+
+.ThumbnailContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 80px;
+}
+
+.ThumbnailImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 
+======================================
+*/
