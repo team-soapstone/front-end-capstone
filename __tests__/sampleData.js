@@ -28,7 +28,7 @@ export const exampleReviewMetaData = {
   ratings: { 1: '0', 2: '1', 3:'1', 4:'1', 5:'2' },
   recommended: {},
   characteristics: {}
-}
+};
 
 // CASE 1 - No reviews exist for product
 export const exampleReviewNone = {
@@ -36,7 +36,7 @@ export const exampleReviewNone = {
   page: '0',
   count: '5',
   results: []
-}
+};
 
 // CASE 2 - Only one review exist for product
 export const exampleReviewOne = {
@@ -62,9 +62,47 @@ export const exampleReviewOne = {
       url: 'urlplaceholder/review_5_photo_number_2.jpg'
     }]
   }]
-}
+};
 
-// CASE 3 - There are multiple reviews
+// CASE 3 - Only two reviews exist for product
+export const exampleReviewsTwo = {
+  product: '10',
+  page: '0',
+  count: '5',
+  results: [{
+    review_id: '1',
+    rating: '3',
+    summary: 'I\'m enjoying wearing these shades',
+    recommended: 'false',
+    response: 'null',
+    body: 'comfortable and practical',
+    date: '2019-04-14T00:00:00.000Z',
+    reviewer_name: 'shortandsweeet',
+    helpfulness: '5',
+    photos: [{
+      id: '1',
+      url: 'urlplaceholder/review_5_photo_number_1.jpg',
+    },
+    {
+      id: '2',
+      url: 'urlplaceholder/review_5_photo_number_2.jpg'
+    }]
+  },
+  {
+    review_id: '2',
+    rating: '4',
+    summary: 'I am liking these glasses',
+    recommended: 'false',
+    response: 'Glad you\'re enjoying the product!',
+    body: 'They are very dark. But that\'s good because I\'m in very sunny spots',
+    date: '2019-04-14T00:00:00.000Z',
+    reviewer_name: 'bigbrotherbenjamin',
+    helpfulness: '4',
+    photos: []
+  }]
+};
+
+// CASE 4 - There are multiple reviews
 export const exampleReviews = {
   product: '10',
   page: '0',
@@ -138,4 +176,4 @@ export const exampleReviews = {
       photos: []
     },
   ]
-}
+};

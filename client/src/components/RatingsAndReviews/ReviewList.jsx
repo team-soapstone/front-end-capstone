@@ -46,7 +46,6 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log('Reviews ', this.props.reviews);
     // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist !== false) {
@@ -62,7 +61,7 @@ class ReviewList extends React.Component {
 
     // conditional for more review button to render
     let moreReview;
-    if (this.state.allReviewsRendered === false && this.state.reviewsExist === true) {
+    if (this.state.allReviewsRendered === false && this.state.amountOfReviews > 2) {
       moreReview = <button
         className='buttons'
         id='moreReview'

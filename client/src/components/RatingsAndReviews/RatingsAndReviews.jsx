@@ -54,7 +54,6 @@ class RatingsAndReviews extends React.Component {
   }
 
   handleSort(e) {
-    console.log(e.target.value)
     // make another GET request to rewrite `reviews` state bassed on sort parameter
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
       {
@@ -76,7 +75,6 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { productRatings, currentProduct } = this.props;
     return (
       <div>
