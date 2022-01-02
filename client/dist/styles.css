@@ -3,19 +3,52 @@ h1 {
   background-color: black;
 }
 
-.star, .partialStar {
-  font-size: 25px;
-  display: inline-block;
-  position: relative;
-  color: black;
+body {
+  max-height: 1000px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-.partialStar:after {
-  content: " \2605";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--width);
-  overflow: hidden;
-  color: black;
+.star {
+  color: #ccc;
 }
+
+/*
+======================================
+OVERVIEW
+======================================
+*/
+.SelectedImageContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 542px;
+}
+
+.SelectedImageContainer button {
+  margin-top: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 25px;
+}
+
+.SelectedImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ThumbnailContainer {
+  display: flex;
+  justify-content: center;
+  width: 505px;
+  height: 80px;
+}
+
+.ThumbnailImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*
+======================================
+*/

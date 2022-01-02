@@ -1,5 +1,6 @@
 import React from 'react';
-
+// change ratings function to render stars based on a number from 0-5.
+// pull out utility function to calculate average.
 const Ratings = ({ productRatings }) => {
   const defaultRatings = { 0: '1', 1: '0', 2: '0', 3: '0', 4: '0', 5: '0'};
   // == EDGE CASES == Do not change order
@@ -21,7 +22,7 @@ const Ratings = ({ productRatings }) => {
       numerator += Number(star) * Number(productRatings[star]);
       denominator += Number(productRatings[star]);
     }
-    const number = numerator / denominator;
+    let number = numerator / denominator;
     return ((Math.round(number * 4) / 4).toFixed(2));
   };
 
