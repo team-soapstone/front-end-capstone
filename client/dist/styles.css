@@ -12,6 +12,8 @@ body {
 .star {
   color: #ccc;
 }
+<<<<<<< HEAD
+=======
 
 .widgetHeader {
   text-transform: uppercase;
@@ -28,3 +30,4 @@ body {
 .reviewList::-webkit-scrollbar {
   display: none;
 }
+>>>>>>> main
