@@ -9,8 +9,27 @@ body {
   overflow-x: hidden;
 }
 
-.star {
-  color: #ccc;
+/*
+======================================
+STAR RENDERING
+======================================
+*/
+
+.star, .partialStar {
+  font-size: 25px;
+  display: inline-block;
+  position: relative;
+  color: black;
+}
+
+.partialStar:after {
+  content: " \2605";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--width);
+  overflow: hidden;
+  color: black;
 }
 
 /*
@@ -18,6 +37,7 @@ body {
 OVERVIEW
 ======================================
 */
+
 .SelectedImageContainer {
   display: flex;
   justify-content: center;

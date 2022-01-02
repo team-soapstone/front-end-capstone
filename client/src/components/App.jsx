@@ -8,6 +8,8 @@ import Overview from './Overview/Overview.jsx';
 import QuestionView from './QA/QuestionView.jsx';
 import RatingsAndReviews from './RatingsAndReviews/RatingsAndReviews.jsx';
 
+import ratingAverage from './util/ratingAverage.js';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +55,7 @@ class App extends React.Component {
     return (
       <div>
         <NavBar />
-        <Ratings productRatings={this.state.productRatings}/>
+        <Ratings rating={ratingAverage(this.state.productRatings.ratings)}/>
         {this.state.currentProduct && this.state.productRatings && <Overview currentProduct={this.state.currentProduct}/>}
         <QuestionView productId={this.state.currentProduct.id}/>
         <RatingsAndReviews
