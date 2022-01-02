@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "moment": "^2.29.1",
     "react": "^15.6.0",
     "react-dom": "^15.6.0"
   }
