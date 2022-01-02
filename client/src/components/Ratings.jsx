@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Ratings = ({ rating = 0 }) => {
+const Ratings = ({ rating }) => {
+  // EDGE CASES
+  if (typeof rating !== 'number') {
+    rating = 0
+  } else if (rating < 0 || rating > 5) {
+    rating = 0
+  }
   rating = Number(rating);
   let filledStars = Math.floor(rating);
   let emptyStars = 5 - Math.ceil(rating);
