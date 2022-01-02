@@ -80,7 +80,7 @@ class Overview extends React.Component {
       <div className="OverviewContainer">
         {this.state.styles && <ImageGallery selectedStyle={this.state.selectedStyle} selectedStylePhotos={this.state.selectedStylePhotos} currentPhoto={this.state.currentPhoto}/>}
         <div className="InformationContainer">
-          <Ratings />
+          <Ratings productRatings={this.props.ratings}/>
           <ProductInformation info={this.state.productInformation} price={this.state.price}/>
           {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
           <AddToCart />
