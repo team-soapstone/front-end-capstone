@@ -22,9 +22,17 @@ class Overview extends React.Component {
       price: 0
     }
   }
-
+  
   componentDidMount() {
     this.getStyles(this.props.currentProduct.id);
+    this.getInformation(this.props.currentProduct.id);
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (this.props.currentProduct !== prevProps.currentProduct) {
+      this.getStyles(this.props.currentProduct.id);
+      this.getInformation(this.props.currentProduct.id);
+    }
   }
 
   getStyles(id) {
@@ -58,13 +66,15 @@ class Overview extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="OverviewContainer">
         {this.state.styles && <ImageGallery selectedStyle={this.state.selectedStyle} selectedStylePhotos={this.state.selectedStylePhotos} currentPhoto={this.state.currentPhoto}/>}
-        <Ratings />
-        <ProductInformation info={this.state.productInformation} price={this.state.price}/>
-        <StyleSelector />
-        <AddToCart />
-        <Share />
+        <div className="InformationContainer">
+          <Ratings />
+          <ProductInformation info={this.state.productInformation} price={this.state.price}/>
+          <StyleSelector />
+          <AddToCart />
+          <Share />
+        </div>
         <ProductDescription />
       </div>
     );

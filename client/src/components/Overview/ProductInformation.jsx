@@ -6,7 +6,7 @@ const ProductInformation = ({info, price}) => {
     <div>
       <div>{info.category}</div>
       <div>{info.name}</div>
-      <div>{price}</div>
+      <div>${price}</div>
     </div>
   );
 }

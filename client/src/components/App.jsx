@@ -53,8 +53,7 @@ class App extends React.Component {
     return (
       <div>
         <NavBar />
-        <Ratings productRatings={this.state.productRatings}/>
-        {this.state.currentProduct && this.state.productRatings && <Overview currentProduct={this.state.currentProduct}/>}
+        <Overview currentProduct={this.state.currentProduct}/>
         <QuestionView productId={this.state.currentProduct.id}/>
         <RatingsAndReviews
           currentProduct={this.state.currentProduct}

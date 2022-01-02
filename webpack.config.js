@@ -42,7 +42,7 @@ const config = {
     }
   },
   plugins: [
-    new MomentLocalesPlugins()
+    // new MomentLocalesPlugins()
   ]
 };
 

@@ -18,6 +18,16 @@ body {
 OVERVIEW
 ======================================
 */
+.OverviewContainer {
+  display: flex;
+}
+
+.InformationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .SelectedImageContainer {
   display: flex;
   justify-content: center;
