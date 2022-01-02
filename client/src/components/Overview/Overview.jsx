@@ -15,19 +15,20 @@ class Overview extends React.Component {
     super(props)
     this.state = {
       styles: '',
-      selectedStyle: 0,
+      selectedStyle: '',
       currentPhoto: '',
       selectedStylePhotos: '',
       productInformation: '',
       price: 0
     }
+    this.handleChangeStyle = this.handleChangeStyle.bind(this);
   }
   
   componentDidMount() {
     this.getStyles(this.props.currentProduct.id);
     this.getInformation(this.props.currentProduct.id);
   }
-  
+
   componentDidUpdate(prevProps) {
     if (this.props.currentProduct !== prevProps.currentProduct) {
       this.getStyles(this.props.currentProduct.id);
@@ -41,6 +42,7 @@ class Overview extends React.Component {
         console.log(response.data.results);
         this.setState({
           styles: response.data.results,
+          selectedStyle: response.data.results[0],
           currentPhoto: response.data.results[0].photos[0].url,
           selectedStylePhotos: response.data.results[0].photos,
           price: response.data.results[0].original_price
@@ -64,6 +66,15 @@ class Overview extends React.Component {
       })
   }
 
+  handleChangeStyle(styleIndex) {
+    this.setState({
+      selectedStyle: this.state.styles[styleIndex],
+      currentPhoto: this.state.styles[styleIndex].photos[0].url,
+      selectedStylePhotos: this.state.styles[styleIndex].photos,
+      price: this.state.styles[styleIndex].original_price
+    })
+  }
+
   render() {
     return(
       <div className="OverviewContainer">
@@ -71,7 +82,7 @@ class Overview extends React.Component {
         <div className="InformationContainer">
           <Ratings />
           <ProductInformation info={this.state.productInformation} price={this.state.price}/>
-          <StyleSelector />
+          {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
           <AddToCart />
           <Share />
         </div>
