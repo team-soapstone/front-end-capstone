@@ -14,7 +14,7 @@ const ratingAverage = (productRatings) => {
   } else if (Object.values(productRatings).reduce((init, current) => { return init + current; }) === 0) {
     productRatings = defaultRatings;
   }
-  console.log(productRatings);
+
   let numerator = 0;
   let denominator = 0;
   for (let star in productRatings) {
@@ -22,7 +22,6 @@ const ratingAverage = (productRatings) => {
     denominator += Number(productRatings[star]);
   }
   let number = numerator / denominator;
-  console.log('Average ', number)
   return ((Math.round(number * 4) / 4).toFixed(2));
 };
 

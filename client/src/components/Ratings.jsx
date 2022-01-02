@@ -11,7 +11,6 @@ const Ratings = ({ rating }) => {
   let filledStars = Math.floor(rating);
   let emptyStars = 5 - Math.ceil(rating);
   let partialStar = rating - filledStars;
-  console.log(filledStars, emptyStars, partialStar)
   if (partialStar === 0.25) {
     partialStar = '40%';
   } else if (partialStar === 0.5) {
