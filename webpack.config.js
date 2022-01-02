@@ -41,9 +41,6 @@ const config = {
       directory: './client/dist'
     }
   },
-  plugins: [
-    // new MomentLocalesPlugins()
-  ]
 };
 
 module.exports = config;
