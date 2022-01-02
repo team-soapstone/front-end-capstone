@@ -8,9 +8,6 @@ class StyleSelector extends React.Component {
     }
   }
 
-  handleSelectStyle() {
-
-  }
   
   render() {
     return(
