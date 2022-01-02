@@ -19,6 +19,7 @@ class RatingsAndReviews extends React.Component {
     this.state = {
       reviews: {},
     };
+    this.handleSort = this.handleSort.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,6 +53,28 @@ class RatingsAndReviews extends React.Component {
     return totalReviews;
   }
 
+  handleSort(e) {
+    console.log(e.target.value)
+    // make another GET request to rewrite `reviews` state bassed on sort parameter
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      {
+        headers: {Authorization: API_KEY},
+        params: {
+          product_id: this.props.currentProduct.id,
+          count: this.getTotalReviewsCount(),
+          sort: e.target.value
+        }
+      })
+      .then((response) => {
+        this.setState({
+          reviews: response.data
+        })
+      })
+      .catch((error) => {
+        throw error;
+      })
+  }
+
   render() {
     console.log(this.props);
     const { productRatings, currentProduct } = this.props;
@@ -60,7 +83,10 @@ class RatingsAndReviews extends React.Component {
         <h3 className="widgetHeader">RATINGS & REVIEWS</h3>
         <RatingBreakdown productRatings={productRatings}/>
         <ProductBreakdown productRatings={productRatings}/>
-        <ReviewList reviews={this.state.reviews.results}/>
+        <ReviewList
+          reviews={this.state.reviews.results}
+          handleSort={this.handleSort}
+        />
       </div>
     );
   }

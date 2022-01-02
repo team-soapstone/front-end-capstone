@@ -1,25 +1,11 @@
 import React from 'react';
 
-class QuestionSearch extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-
-    };
-  }
-
-
-
-
-
-  render() {
-    return (
-      <div>
-
-      </div>
-    );
-  }
+const QuestionSearch = (props) => {
+  return (
+    <div>
+      <input type='text' placeholder='Have a question? Search for answers...' onChange={(e) => { props.onSearch(e.target.value); }}/>
+    </div>
+  );
 }
 
 export default QuestionSearch;

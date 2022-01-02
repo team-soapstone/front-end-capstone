@@ -17,7 +17,8 @@ class ReviewList extends React.Component {
     this.state = {
       reviewsExist: false,
       reviewsRendered: 2,
-      allReviewsRendered: false
+      allReviewsRendered: false,
+      amountOfReviews: 0
     };
     this.handleSeeMoreReviews = this.handleSeeMoreReviews.bind(this);
   }
@@ -25,7 +26,8 @@ class ReviewList extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.reviews !== prevProps.reviews && this.props.reviews.length > 0) {
       this.setState({
-        reviewsExist: true
+        reviewsExist: true,
+        amountOfReviews: this.props.reviews.length
       })
     }
   }
@@ -52,7 +54,10 @@ class ReviewList extends React.Component {
     } else {
       list = this.props.reviews.map((review, idx) => {
         if (idx < this.state.reviewsRendered) {
-          return <Review key={review.review_id}/>
+          return <Review
+            key={review.review_id}
+            review={review}
+          />
         }
       })
     }
@@ -66,8 +71,20 @@ class ReviewList extends React.Component {
     }
 
     return (
-      <div className='reviewList'>
-        {list}
+      <div>
+        <label htmlFor='sortReviews' ></label>
+        {this.state.amountOfReviews} reviews, sorted by <select
+            name='sortReviews'
+            id='sortReviews'
+            onChange={this.props.handleSort}
+          >
+          <option value='relevant'>relevance</option>
+          <option value='helpful'>helpfulness</option>
+          <option value='newest'>newest</option>
+        </select>
+        <div className='reviewList'>
+          {list}
+        </div>
         {moreReview}
         <button className='buttons'><NewReview /></button>
       </div>
