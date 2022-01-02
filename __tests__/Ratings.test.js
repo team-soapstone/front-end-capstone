@@ -1,14 +1,25 @@
 import React from 'react';
-import { cleanup, screen, render } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { shallow } from 'enzyme';
+
 import Ratings from '../client/src/components/Ratings.jsx';
 
-afterEach(cleanup);
+describe('Ratings', () => {
+  describe('When an invalid prop is passed into the component', () => {
+    it('should render 5 empty stars as a default', () => {
+      // test numbers less than 0, greater than 5
+      // if partial, must contain, 0,25, 0.5, or 0.75, else render as 0.
+      // strings
+      // undefined, null
+    })
+  })
 
-it('Check if Ratings component renders the correct average', () => {
-  const productRatings = { 1: '4', 2: '3', 3: '8', 4: '1', 5: '1'};
-  render(<Ratings productRatings={productRatings}/>);
-  const rating = screen.getByTestId('avg');
-  expect(rating).toBeInTheDocument();
-  expect(rating).toHaveTextContent('2.5');
-});
+  describe('When a number between 1 to 5 is passed into the component', () => {
+    it('should render the same amount of filled stars', () => {
+
+    })
+
+    it('should render a partially filled star if the average rating passed in was rounded to 0.25, 0.5, 0.75', () => {
+
+    })
+  })
+})
