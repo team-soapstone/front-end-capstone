@@ -37,6 +37,30 @@ STAR RENDERING
 OVERVIEW
 ======================================
 */
+.OverviewContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Product Information */
+.InformationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Image Gallery */
+.ImageGalleryContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.ImageContainer {
+  display: flex;
+  justify-content: center;
+}
 
 .SelectedImageContainer {
   display: flex;
@@ -45,14 +69,15 @@ OVERVIEW
   height: 542px;
 }
 
-.SelectedImageContainer button {
-  margin-top: 50%;
+.ImageGalleryContainer button {
+  margin-top: 45%;
   margin-left: 10px;
   margin-right: 10px;
   height: 25px;
 }
 
 .SelectedImage {
+  border: solid 4px transparent;
   max-width: 100%;
   max-height: 100%;
 }
@@ -60,15 +85,33 @@ OVERVIEW
 .ThumbnailContainer {
   display: flex;
   justify-content: center;
-  width: 505px;
   height: 80px;
 }
 
 .ThumbnailImage {
-  max-width: 100%;
+  border: solid 3px transparent;
+  max-width: 48px;
   max-height: 100%;
 }
 
-/*
+/* Style Selector */
+.StyleSelectorContainer {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.StyleImage {
+  flex: 1 0 21%;
+  border-radius: 80px;
+  border: solid 3px transparent;
+  margin-top: 10px;
+  margin-right: 5px;
+  height: 80px;
+  width: 50px;
+  max-width: 21%;
+}
+
+/* 
 ======================================
 */
