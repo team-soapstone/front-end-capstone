@@ -3,6 +3,7 @@ import axios from 'axios';
 import API_KEY from '../../../../config.js';
 
 import Ratings from '../Ratings.jsx';
+import ratingAverage from '../util/ratingAverage.js';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -19,14 +20,17 @@ class Overview extends React.Component {
       currentPhoto: '',
       selectedStylePhotos: '',
       productInformation: '',
-      price: 0
+      price: 0,
+      ratingsAverage: ''
     }
     this.handleChangeStyle = this.handleChangeStyle.bind(this);
+    this.getRatingsAverage = this.getRatingsAverage.bind(this);
   }
   
   componentDidMount() {
     this.getStyles(this.props.currentProduct.id);
     this.getInformation(this.props.currentProduct.id);
+    this.getRatingsAverage();
   }
 
   componentDidUpdate(prevProps) {
@@ -34,12 +38,19 @@ class Overview extends React.Component {
       this.getStyles(this.props.currentProduct.id);
       this.getInformation(this.props.currentProduct.id);
     }
+    if (this.props.ratings !== prevProps.ratings) {
+      this.getRatingsAverage();
+    }
+  }
+  
+  getRatingsAverage() {
+    let rating = Number(ratingAverage(this.props.ratings));
+    this.setState({ratingsAverage: rating});
   }
 
   getStyles(id) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${id}/styles`, { headers: {Authorization: API_KEY} })
       .then((response) => {
-        console.log(response.data.results);
         this.setState({
           styles: response.data.results,
           selectedStyle: response.data.results[0],
@@ -49,7 +60,7 @@ class Overview extends React.Component {
         })
       })
       .catch((error) => {
-        console.log(error); // do something with error or throw error
+        throw error;
       })
   }
 
@@ -62,7 +73,7 @@ class Overview extends React.Component {
         })
       })
       .catch((error) => {
-        console.log(error); // do something with error or throw error
+        throw error;
       })
   }
 
@@ -80,7 +91,7 @@ class Overview extends React.Component {
       <div className="OverviewContainer">
         {this.state.styles && <ImageGallery selectedStyle={this.state.selectedStyle} selectedStylePhotos={this.state.selectedStylePhotos} currentPhoto={this.state.currentPhoto}/>}
         <div className="InformationContainer">
-          <Ratings productRatings={this.props.ratings}/>
+          <Ratings rating={this.state.ratingsAverage}/>
           <ProductInformation info={this.state.productInformation} price={this.state.price}/>
           {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
           <AddToCart />
