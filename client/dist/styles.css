@@ -49,6 +49,17 @@ OVERVIEW
   justify-content: space-between;
 }
 
+.ProductCategory {
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+
+.ProductName {
+  font-weight: 600;
+  font-size: 200%;
+  margin-bottom: 1em;
+}
+
 /* Image Gallery */
 .ImageGalleryContainer {
   display: flex;
