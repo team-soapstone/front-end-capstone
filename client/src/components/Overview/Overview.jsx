@@ -97,7 +97,7 @@ class Overview extends React.Component {
           <AddToCart />
           <Share />
         </div>
-        <ProductDescription />
+        {this.state.productInformation && <ProductDescription info={this.state.productInformation}/>}
       </div>
     );
   }
