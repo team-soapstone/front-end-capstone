@@ -33,7 +33,6 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='fiveStarRow'>
             <td><button
               className='ratingFilterButton'
-
             >5 star</button></td>
             <td className='barContainer'><div
               id='fiveStarBar'
