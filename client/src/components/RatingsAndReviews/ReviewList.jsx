@@ -46,7 +46,6 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log('Reviews ', this.props.reviews);
     // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist === false) {

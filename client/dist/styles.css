@@ -68,7 +68,7 @@ OVERVIEW
   /* flex: 0 0 45%; */
   justify-content: center;
   flex-direction: column;
-  
+
 }
 
 .ImageContainer {
@@ -152,17 +152,34 @@ OVERVIEW
   margin-left: 50px;
 }
 
-/* 
+/*
 ======================================
 RATINGS & REVIEWS
 ======================================
 */
 
+.widgetContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .widgetHeader {
+  display: flex;
+  height: 100%;
   text-transform: uppercase;
   font-size: 16px;
   font-family: sans-serif, Arial, Helvetica;
   font-weight: normal;
+}
+
+.breakdownReviewContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.breakdownContainer {
+  width: 300px;
 }
 
 .reviewList {
@@ -172,4 +189,9 @@ RATINGS & REVIEWS
 
 .reviewList::-webkit-scrollbar {
   display: none;
+}
+
+.reviewMeta {
+  display: flex;
+  justify-content: space-between;
 }
