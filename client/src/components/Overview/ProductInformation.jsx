@@ -4,9 +4,9 @@ const ProductInformation = ({info, price}) => {
 
   return (
     <div>
-      <div>{info.category}</div>
-      <div>{info.name}</div>
-      <div>${price}</div>
+      <div className="ProductCategory">{info.category}</div>
+      <div className="ProductName">{info.name}</div>
+      <div className="ProductPrice">${price}</div>
     </div>
   );
 }

@@ -15,12 +15,13 @@ class QuestionView extends React.Component {
       currentProductQuestions: null,
       searchedQuestions: null,
       currentProductAnswers: '',
-      shownQuestions: 4,
+      shownQuestions: 2,
       shownAnswers: 2
     };
 
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
     this.searchQuestionList = this.searchQuestionList.bind(this);
+    this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -69,16 +70,24 @@ class QuestionView extends React.Component {
       }
   }
 
+  loadMoreQuestions() {
+    this.setState({
+      shownQuestions: this.state.shownQuestions + 2
+    });
+
+    this.getCurrentQuestions(this.props.productId);
+  }
+
 
   render() {
     if (!this.state.currentProductQuestions) {
-      return <div></div>
+      return <div data-testid='question-view'></div>
     }
 
     return (
       <div data-testid='question-view'>
       <QuestionSearch onSearch={this.searchQuestionList}/>
-      <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers}/>
+      <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions}/>
       <AddQuestion addQuestion={this.handleAddQuestion}/>
       <AddAnswer />
       </div>
