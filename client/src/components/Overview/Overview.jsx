@@ -51,6 +51,7 @@ class Overview extends React.Component {
   getStyles(id) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${id}/styles`, { headers: {Authorization: API_KEY} })
       .then((response) => {
+        console.log(response.data.results);
         this.setState({
           styles: response.data.results,
           selectedStyle: response.data.results[0],
@@ -94,7 +95,7 @@ class Overview extends React.Component {
           <Ratings rating={this.state.ratingsAverage}/>
           <ProductInformation info={this.state.productInformation} price={this.state.price}/>
           {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
-          <AddToCart />
+          {this.state.selectedStyle && <AddToCart skus={this.state.selectedStyle.skus}/>}
           <Share />
         </div>
         {this.state.productInformation && <ProductDescription info={this.state.productInformation}/>}
