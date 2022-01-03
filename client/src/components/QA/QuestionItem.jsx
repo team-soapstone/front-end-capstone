@@ -1,16 +1,34 @@
 import React from "react";
+import moment from 'moment';
 
 const QuestionItem = ({ question, answerLimit }) => {
+  let container = [];
+
+  for (let answerId in question.answers) {
+    container.push([answerId, question.answers[answerId]])
+  }
+
+  let sortedContainer = container.sort((a, b) => {
+    return b[1].helpfulness - a[1].helpfulness;
+  });
+
+  console.log('TEST', sortedContainer);
   return (
     <div className="questionItem">
-      <div className="questionText">Q: {question.question_body}</div>
+      <div id="questionHeader">
+        <div className="questionText">Q: {question.question_body}</div>
+        <div className="questionStats">Helpful? &nbsp; <span className="clickable" style={ {textDecoration: 'underline'} }>Yes</span>({question.question_helpfulness})&nbsp; | &nbsp;<span className="clickable" style={ {textDecoration: 'underline'} }>Add Answer</span></div>
+      </div>
       <div>
-        {Object.keys(question.answers)
+        {sortedContainer
           .slice(0, answerLimit)
-          .map((answerId) => {
+          .map((answer) => {
             return (
-              <p style={{ fontSize: "13px" }} key={answerId} className='answer'>
-                A: {question.answers[answerId].body}
+              <p style={{ fontSize: "13px" }} key={answer[1].id} className='answer'>
+                A: {answer[1].body}
+                <br/>
+                by {answer[1].answerer_name}, {moment(answer[1].date).format('MMM Do YYYY')}
+                &nbsp; | &nbsp; Helpful? &nbsp; <span style={ {textDecoration: 'underline'} }>Yes</span>({answer[1].helpfulness}) &nbsp; | &nbsp; <span style={ {textDecoration: 'underline'} }>{answer[1].reported ? 'Reported' : 'Report'}</span>
               </p>
             );
           })}
