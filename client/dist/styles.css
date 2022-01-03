@@ -195,3 +195,67 @@ RATINGS & REVIEWS
   display: flex;
   justify-content: space-between;
 }
+
+/*
+======================================
+Questions & Answers
+======================================
+*/
+
+.qaComponent {
+  position: relative;
+  left: 15%;
+}
+
+.qaSearch {
+  position: relative;
+  width: 70%;
+  height: 30px;
+}
+
+.questionItem {
+  border: 1px dotted black;
+  margin-top: 5px;
+  width: 70.5%;
+}
+
+.questionText {
+  font-weight: 700;
+}
+
+.answer {
+  color: grey;
+}
+
+.moreQuestionButton {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.addQuestionForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  width: 20%;
+}
+
+.addQuestionTitle {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addQuestionInput {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#addQuestionSubmit {
+  margin-bottom: 15px;
+}

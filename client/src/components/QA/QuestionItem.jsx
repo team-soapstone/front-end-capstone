@@ -2,8 +2,8 @@ import React from "react";
 
 const QuestionItem = ({ question, answerLimit }) => {
   return (
-    <div>
-      <div>Q: {question.question_body}</div>
+    <div className="questionItem">
+      <div className="questionText">Q: {question.question_body}</div>
       <div>
         {Object.keys(question.answers)
           .slice(0, answerLimit)

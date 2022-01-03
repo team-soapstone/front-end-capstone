@@ -85,11 +85,14 @@ class QuestionView extends React.Component {
     }
 
     return (
-      <div data-testid='question-view'>
-      <QuestionSearch onSearch={this.searchQuestionList}/>
-      <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions}/>
-      <AddQuestion addQuestion={this.handleAddQuestion}/>
-      <AddAnswer />
+      <div>
+        <div data-testid='question-view' className="qaComponent">
+          <h2>Questions & Answers</h2>
+          <QuestionSearch onSearch={this.searchQuestionList}/>
+          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions}/>
+          <AddQuestion addQuestion={this.handleAddQuestion}/>
+          <AddAnswer />
+        </div>
       </div>
     );
   }

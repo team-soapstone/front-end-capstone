@@ -45,13 +45,13 @@ class AddQuestion extends React.Component {
 
   render() {
     return(
-      <form style={{ display: "inline-block", border: "1px solid black", width: "20%"}} onSubmit={this.handleSubmit}>
-        <h3>Add Question</h3>
-        <textarea onChange={this.onChangeQuestion} value={this.state.question}/>
-        <input type="text" className="nickname" placeholder="Nickname..." value={this.state.nickname} onChange={this.onChangeNickname}/>
-        <p style={{ fontSize: "8px", marginTop: '0' }}>For privacy reasons, do not use your full name or email address within nickname.</p>
-        <input type="email" className="email" placeholder="Email..." value={this.state.email} onChange={this.onChangeEmail}/>
-        <input type="submit" />
+      <form className="addQuestionForm" onSubmit={this.handleSubmit}>
+        <h3 className="addQuestionTitle">Add Question</h3>
+        <textarea className="addQuestionInput" onChange={this.onChangeQuestion} value={this.state.question}/>
+        <input className="addQuestionInput" type="text" placeholder="Nickname..." value={this.state.nickname} onChange={this.onChangeNickname}/>
+        <p className="addQuestionInput" style={{ fontSize: "8px", marginTop: '0' }}>For privacy reasons, do not use your full name or email address within nickname.</p>
+        <input className="addQuestionInput" type="email"  placeholder="Email..." value={this.state.email} onChange={this.onChangeEmail}/>
+        <input className="addQuestionInput" id="addQuestionSubmit" type="submit" />
       </form>
     );
   }
