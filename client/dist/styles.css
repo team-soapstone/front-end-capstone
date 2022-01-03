@@ -234,6 +234,10 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
+.reviewContainer {
+  width: 825px;
+}
+
 .reviewList {
   max-height: 500px;
   overflow: scroll;

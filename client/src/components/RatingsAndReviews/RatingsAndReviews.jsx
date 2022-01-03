@@ -89,7 +89,6 @@ class RatingsAndReviews extends React.Component {
           </div>
         }
         <ReviewList
-          className='reviewContainer'
           reviews={this.state.reviews.results}
           handleSort={this.handleSort}
           />

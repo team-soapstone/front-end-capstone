@@ -45,6 +45,10 @@ class ReviewList extends React.Component {
     }
   }
 
+  handleSubmitReview() {
+
+  }
+
   render() {
     // conditional for amount of reviews to render
     let list;
@@ -70,7 +74,7 @@ class ReviewList extends React.Component {
     }
 
     return (
-      <div>
+      <div className='reviewContainer'>
         <label htmlFor='sortReviews' ></label>
         {this.state.amountOfReviews} reviews, sorted by <select
             name='sortReviews'
