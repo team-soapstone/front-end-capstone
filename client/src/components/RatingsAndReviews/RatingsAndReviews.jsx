@@ -84,6 +84,7 @@ class RatingsAndReviews extends React.Component {
         {productRatings &&
           <div className='breakdownContainer'>
             <RatingBreakdown productRatings={productRatings}/>
+            <br/>
             <ProductBreakdown productRatings={productRatings}/>
           </div>
         }

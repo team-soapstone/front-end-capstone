@@ -203,12 +203,35 @@ RATINGS & REVIEWS
   color: transparent;
 }
 
+.ratingFilterButton {
+  font-size: 14px;
+  background-color: transparent;
+  border: 0;
+  text-decoration: underline;
+}
+
 .ratingBar {
+  height: 10px;
   width: 100%;
 }
 
 #fiveStarBar, #fourStarBar, #threeStarBar, #twoStarBar, #oneStarBar {
   background: linear-gradient(to right, green var(--backWidth), grey var(--backWidth));
+}
+
+.characteristicBar {
+  height: 13px;
+  background: linear-gradient(to right, grey 32%, white 32%, grey 33%, grey 65%, white 65%, grey 66%);
+}
+
+.characteristicBar:after {
+  content: "\25BC";
+  padding-left: var(--analogPosition);
+}
+
+.characteristicDescription {
+  display: flex;
+  justify-content: space-between;
 }
 
 .reviewList {
