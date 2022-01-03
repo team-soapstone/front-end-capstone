@@ -2,6 +2,9 @@ import React from 'react';
 import Ratings from '../Ratings.jsx';
 import ratingAverage from '../util/ratingAverage.js';
 
+// may need to change this into a stateful component to keep track of toggleStatus
+// implement onClick eventhandler to change the text within button to bold
+
 const RatingBreakdown = ({ productRatings }) => {
   const averageRating = Number(ratingAverage(productRatings.ratings));
   const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
@@ -28,7 +31,10 @@ const RatingBreakdown = ({ productRatings }) => {
       <table className='ratingTable'>
         <tbody>
           <tr className='fiveStarRow'>
-            <td><button>5 star</button></td>
+            <td><button
+              className='ratingFilterButton'
+
+            >5 star</button></td>
             <td className='barContainer'><div
               id='fiveStarBar'
               className='ratingBar'
@@ -36,7 +42,9 @@ const RatingBreakdown = ({ productRatings }) => {
             >Rating Bar</div></td>
           </tr>
           <tr className='fourStarRow'>
-            <td><button>4 star</button></td>
+            <td><button
+              className='ratingFilterButton'
+            >4 star</button></td>
             <td className='barContainer'><div
               id='fourStarBar'
               className='ratingBar'
@@ -44,7 +52,9 @@ const RatingBreakdown = ({ productRatings }) => {
             >Rating Bar</div></td>
           </tr>
           <tr className='threeStarRow'>
-            <td><button>3 star</button></td>
+            <td><button
+              className='ratingFilterButton'
+            >3 star</button></td>
             <td className='barContainer'><div
               id='threeStarBar'
               className='ratingBar'
@@ -52,7 +62,9 @@ const RatingBreakdown = ({ productRatings }) => {
             >Rating Bar</div></td>
           </tr>
           <tr className='twoStarRow'>
-            <td><button>2 star</button></td>
+            <td><button
+              className='ratingFilterButton'
+            >2 star</button></td>
             <td className='barContainer'><div
               id='twoStarBar'
               className='ratingBar'
@@ -60,7 +72,9 @@ const RatingBreakdown = ({ productRatings }) => {
             >Rating Bar</div></td>
           </tr>
           <tr className='oneStarRow'>
-            <td><button>1 star</button></td>
+            <td><button
+              className='ratingFilterButton'
+            >1 star</button></td>
             <td className='barContainer'><div
               id='oneStarBar'
               className='ratingBar'
