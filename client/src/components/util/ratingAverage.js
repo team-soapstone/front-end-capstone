@@ -1,5 +1,4 @@
 const ratingAverage = (productRatings) => {
-  console.log(productRatings);
   const defaultRatings = { 0: '1', 1: '0', 2: '0', 3: '0', 4: '0', 5: '0'};
 
   // == EDGE CASES == Do not change order

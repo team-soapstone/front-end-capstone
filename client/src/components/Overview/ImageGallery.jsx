@@ -9,6 +9,12 @@ class ImageGallery extends React.Component {
     }
   }
   
+  componentDidUpdate(prevProps) {
+    if (this.props.currentPhoto !== prevProps.currentPhoto) {
+      this.setState({selectedImage: this.props.currentPhoto});
+    }
+  }
+
   handleNextImage() {
     if (this.state.selectedImageIndex < this.props.selectedStylePhotos.length - 1) {
       this.setState({selectedImage: this.props.selectedStylePhotos[this.state.selectedImageIndex+1].url, selectedImageIndex: this.state.selectedImageIndex+1})
@@ -31,10 +37,12 @@ class ImageGallery extends React.Component {
 
   render() {
     return(
-      <div>
-        <div className="SelectedImageContainer">
+      <div className="ImageGalleryContainer">
+        <div className="ImageContainer">
           <button onClick={this.handlePreviousImage.bind(this)}>&lt;</button>
-          <img className="SelectedImage" src={this.state.selectedImage}/>
+          <div className="SelectedImageContainer">
+            <img className="SelectedImage" src={this.state.selectedImage}/>
+          </div>
           <button onClick={this.handleNextImage.bind(this)}>&gt;</button>
         </div>
         <div className="ThumbnailContainer">
