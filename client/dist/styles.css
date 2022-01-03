@@ -39,12 +39,14 @@ OVERVIEW
 */
 .OverviewContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
 /* Product Information */
 .InformationContainer {
   display: flex;
+  /* flex: 0 0 45%; */
   flex-direction: column;
   justify-content: space-between;
 }
@@ -52,6 +54,7 @@ OVERVIEW
 /* Image Gallery */
 .ImageGalleryContainer {
   display: flex;
+  /* flex: 0 0 45%; */
   justify-content: center;
   flex-direction: column;
   
@@ -110,6 +113,32 @@ OVERVIEW
   height: 80px;
   width: 50px;
   max-width: 21%;
+}
+
+/* Product Description */
+.ProductDescriptionContainer {
+  display: flex;
+  flex: 0 0 90%;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ProductDescription {
+  display: flex;
+  flex-direction: column;
+}
+.ProductSlogan {
+  font-weight: 600;
+  font-size: 120%;
+  margin-bottom: 10px;
+}
+
+.ProductFeaturesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 50px;
 }
 
 /* 
