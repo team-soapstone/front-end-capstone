@@ -26,12 +26,6 @@ class Overview extends React.Component {
     this.handleChangeStyle = this.handleChangeStyle.bind(this);
     this.getRatingsAverage = this.getRatingsAverage.bind(this);
   }
-  
-  componentDidMount() {
-    this.getStyles(this.props.currentProduct.id);
-    this.getInformation(this.props.currentProduct.id);
-    this.getRatingsAverage();
-  }
 
   componentDidUpdate(prevProps) {
     if (this.props.currentProduct !== prevProps.currentProduct) {
