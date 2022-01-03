@@ -4,7 +4,7 @@ h1 {
 }
 
 body {
-  max-height: 1000px;
+  min-width: 1150px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -162,6 +162,7 @@ RATINGS & REVIEWS
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 10px 75px 75px 75px;
 }
 
 .widgetHeader {
@@ -180,6 +181,14 @@ RATINGS & REVIEWS
 
 .breakdownContainer {
   width: 300px;
+}
+
+.barContainer {
+  width: 400px;
+}
+
+.ratingBar {
+  background-color: grey;
 }
 
 .reviewList {
