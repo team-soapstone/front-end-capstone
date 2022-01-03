@@ -11,6 +11,7 @@ const QuestionList = (props) => {
           );
         })
       }
+      <button onClick={props.showQuestion}>Add A Question</button>
       <button className="moreQuestionButton" onClick={props.onClick}>More Answered Questions</button>
     </div>
   );
