@@ -11,8 +11,6 @@ const QuestionItem = ({ question, answerLimit }) => {
   let sortedContainer = container.sort((a, b) => {
     return b[1].helpfulness - a[1].helpfulness;
   });
-
-  console.log('TEST', sortedContainer);
   return (
     <div className="questionItem">
       <div id="questionHeader">
