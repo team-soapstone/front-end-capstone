@@ -81,7 +81,7 @@ class QuestionView extends React.Component {
 
   render() {
     if (!this.state.currentProductQuestions) {
-      return <div></div>
+      return <div data-testid='question-view'></div>
     }
 
     return (

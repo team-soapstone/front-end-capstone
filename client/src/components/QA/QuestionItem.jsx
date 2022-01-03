@@ -9,7 +9,7 @@ const QuestionItem = ({ question, answerLimit }) => {
           .slice(0, answerLimit)
           .map((answerId) => {
             return (
-              <p style={{ fontSize: "13px" }} key={answerId}>
+              <p style={{ fontSize: "13px" }} key={answerId} className='answer'>
                 A: {question.answers[answerId].body}
               </p>
             );
