@@ -35,7 +35,7 @@ const Ratings = ({ rating }) => {
     return (<span className='star' key={idx}>&#x2606;</span>)
   })
   return (
-    <div data-testid='avg'>
+    <div>
       {filledStarsRender}
       {partialStarRender}
       {emptyStarRender}
