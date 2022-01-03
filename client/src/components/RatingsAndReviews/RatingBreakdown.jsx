@@ -3,43 +3,69 @@ import Ratings from '../Ratings.jsx';
 import ratingAverage from '../util/ratingAverage.js';
 
 const RatingBreakdown = ({ productRatings }) => {
-// import average utility and render number
-// pass in average ratings to ratings star renderer
-// render a string to show how many reviews recommend the product
-// render a bar chart of stars
-// color scheme - green and grey
-  console.log('Product Ratings ', productRatings)
   const averageRating = Number(ratingAverage(productRatings.ratings));
+  const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
+    return Number(init) + Number(current);
+  });
   const percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
+  const barRenderingStyles = {
+    fiveStar: {'--backWidth': `${Number(productRatings.ratings['5']) * 100/ totalRating}%` },
+    fourStar: {'--backWidth': `${Number(productRatings.ratings['4']) * 100/ totalRating}%` },
+    threeStar: {'--backWidth': `${Number(productRatings.ratings['3']) * 100/ totalRating}%` },
+    twoStar: {'--backWidth': `${Number(productRatings.ratings['2']) * 100/ totalRating}%` },
+    oneStar: {'--backWidth': `${Number(productRatings.ratings['1']) * 100/ totalRating}%` },
+  }
 
   return (
     <div>
       <div>
-        <h2>{averageRating}</h2>
-        <Ratings rating={averageRating}/>
+        <div id='ratingDisplay'>
+          <b id='ratingNumber'>{averageRating}</b>
+          <span id='ratingNumberStar'><Ratings rating={averageRating}/></span>
+        </div>
         <p>{percentRecommended}% of reviews recommend this product</p>
       </div>
       <table className='ratingTable'>
         <tbody>
           <tr className='fiveStarRow'>
             <td><button>5 star</button></td>
-            <td className='barContainer'><div id='fiveStarBar' className='ratingBar' style={{width: '50%'}}>Rating Bar</div></td>
+            <td className='barContainer'><div
+              id='fiveStarBar'
+              className='ratingBar'
+              style={barRenderingStyles.fiveStar}
+            >Rating Bar</div></td>
           </tr>
           <tr className='fourStarRow'>
             <td><button>4 star</button></td>
-            <td className='barContainer'><div id='fourStarBar' className='ratingBar' style={{width: '50%'}}>Rating Bar</div></td>
+            <td className='barContainer'><div
+              id='fourStarBar'
+              className='ratingBar'
+              style={barRenderingStyles.fourStar}
+            >Rating Bar</div></td>
           </tr>
           <tr className='threeStarRow'>
             <td><button>3 star</button></td>
-            <td className='barContainer'><div id='threeStarBar' className='ratingBar' style={{width: '50%'}}>Rating Bar</div></td>
+            <td className='barContainer'><div
+              id='threeStarBar'
+              className='ratingBar'
+              style={barRenderingStyles.threeStar}
+            >Rating Bar</div></td>
           </tr>
           <tr className='twoStarRow'>
             <td><button>2 star</button></td>
-            <td className='barContainer'><div id='twoStarBar' className='ratingBar' style={{width: '50%'}}>Rating Bar</div></td>
+            <td className='barContainer'><div
+              id='twoStarBar'
+              className='ratingBar'
+              style={barRenderingStyles.twoStar}
+            >Rating Bar</div></td>
           </tr>
           <tr className='oneStarRow'>
             <td><button>1 star</button></td>
-            <td className='barContainer'><div id='oneStarBar' className='ratingBar' style={{width: '50%'}}>Rating Bar</div></td>
+            <td className='barContainer'><div
+              id='oneStarBar'
+              className='ratingBar'
+              style={barRenderingStyles.oneStar}
+            >Rating Bar</div></td>
           </tr>
         </tbody>
       </table>

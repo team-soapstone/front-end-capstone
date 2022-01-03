@@ -4,7 +4,7 @@ h1 {
 }
 
 body {
-  min-width: 1150px;
+  min-width: 1300px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -166,12 +166,25 @@ RATINGS & REVIEWS
 }
 
 .widgetHeader {
-  display: flex;
   height: 100%;
   text-transform: uppercase;
   font-size: 16px;
   font-family: sans-serif, Arial, Helvetica;
   font-weight: normal;
+}
+
+#ratingDisplay {
+  display: flex;
+  flex-direction: row;
+}
+
+#ratingNumber {
+  font-size: 75px;
+  padding: 3px;
+}
+
+#ratingNumberStar {
+  padding-top: 10px;
 }
 
 .breakdownReviewContainer {
@@ -181,14 +194,21 @@ RATINGS & REVIEWS
 
 .breakdownContainer {
   width: 300px;
+  padding: 20px;
 }
 
 .barContainer {
-  width: 400px;
+  padding: 4px;
+  width: 200px;
+  color: transparent;
 }
 
 .ratingBar {
-  background-color: grey;
+  width: 100%;
+}
+
+#fiveStarBar, #fourStarBar, #threeStarBar, #twoStarBar, #oneStarBar {
+  background: linear-gradient(to right, green var(--backWidth), grey var(--backWidth));
 }
 
 .reviewList {
