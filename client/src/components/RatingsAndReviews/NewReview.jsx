@@ -22,32 +22,38 @@ class NewReview extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
-      { data: {
-          product_id: this.props.currentProduct.id,
-          rating: this.state.rating,
-          summary: this.state.summary,
-          body: this.state.body,
-          recommend: this.state.recommend,
-          name: this.state.username,
-          email: this.state.email,
-          photos: ['http://placeimg.com/640/480/tech'],
-          characteristics: {
-            // size / fit
-            '131838': this.state.size,
-            // quality
-            '131841': this.state.quality,
-          }
-        }
-      },
-      { headers: {Authorization: API_KEY} }
-    )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      throw error;
-    })
+    const data = {
+      product_id: this.props.currentProduct.id,
+      rating: this.state.rating,
+      summary: this.state.summary,
+      body: this.state.body,
+      recommend: this.state.recommend,
+      name: this.state.username,
+      email: this.state.email,
+      photos: ['http://placeimg.com/640/480/tech'],
+      characteristics: {
+        // size / fit
+        131838: Number(this.state.size),
+        // quality
+        131841: Number(this.state.quality),
+      }
+    }
+    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+    //   { data: {} },
+    //   { headers: {Authorization: API_KEY} }
+    // )
+    // .then((response) => {
+    //   console.log(response);
+    // })
+    // .catch((error) => {
+    //   throw error;
+    // })
+    // axios({
+    //   method: 'post',
+    //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+    //   headers: { Authorization: API_KEY },
+    //   data: data
+    // })
   }
 
   handleStarRender(value) {
@@ -69,7 +75,7 @@ class NewReview extends React.Component {
   }
 
   render() {
-    const { visible, handleClose, currentProduct } = this.props;
+    const { visible, handleClose, currentProduct, productRatings } = this.props;
     return (
       <form
         id="reviewModal"

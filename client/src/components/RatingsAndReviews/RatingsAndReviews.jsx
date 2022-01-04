@@ -84,6 +84,7 @@ class RatingsAndReviews extends React.Component {
         }
         <ReviewList
           currentProduct={currentProduct}
+          productRatings={productRatings}
           reviews={this.state.reviews.results}
           handleSort={this.handleSort}
           />
