@@ -1,5 +1,5 @@
-import React from 'react';
-import QuestionItem from './QuestionItem.jsx'
+import React from "react";
+import QuestionItem from "./QuestionItem.jsx";
 
 const QuestionList = (props) => {
   let sorted = props.questions.sort((a, b) => {
@@ -8,17 +8,22 @@ const QuestionList = (props) => {
 
   return (
     <div>
-      {
-        sorted.map(question => {
-          return (
-            <QuestionItem question={question} answerLimit={props.answerLimit} key={question.question_id}/>
-          );
-        })
-      }
+      {sorted.map((question) => (
+        <QuestionItem
+          question={question}
+          answerLimit={props.answerLimit}
+          key={question.question_id}
+          questionId={question.question_id}
+          markQuestionHelpful={props.markQuestionHelpful}
+          markAnswerHelpful={props.markAnswerHelpful}
+        />
+      ))}
       <button onClick={props.showQuestion}>Add A Question</button>
-      <button className="moreQuestionButton" onClick={props.onClick}>More Answered Questions</button>
+      <button className="moreQuestionButton" onClick={props.onClick}>
+        More Answered Questions
+      </button>
     </div>
   );
-}
+};
 
 export default QuestionList;

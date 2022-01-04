@@ -257,6 +257,8 @@ Questions & Answers
 .qaComponent {
   position: relative;
   left: 15%;
+  max-height: 85vh;
+  overflow: scroll;
 }
 
 .qaSearch {
