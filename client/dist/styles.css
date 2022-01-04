@@ -273,6 +273,10 @@ RATINGS & REVIEWS
   color: black;
 }
 
+#ratingStar {
+  display: flex;
+}
+
 /*
 ======================================
 Questions & Answers

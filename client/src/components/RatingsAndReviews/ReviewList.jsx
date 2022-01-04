@@ -53,6 +53,7 @@ class ReviewList extends React.Component {
   }
 
   render() {
+    const { currentProduct } = this.props;
     // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist === false) {
@@ -77,6 +78,7 @@ class ReviewList extends React.Component {
     }
 
     return (
+
       <div className='reviewContainer'>
         <label htmlFor='sortReviews' ></label>
         {this.state.amountOfReviews} reviews, sorted by <select
@@ -100,6 +102,7 @@ class ReviewList extends React.Component {
         </button>
         {this.state.reviewModalVisbility ?
           <NewReview
+            currentProduct={currentProduct}
             handleClose={this.handleCloseReviewModal}
             visible={this.state.reviewModalVisbility}/> :
           <div></div>}
