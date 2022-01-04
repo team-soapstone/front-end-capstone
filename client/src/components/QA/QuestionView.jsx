@@ -16,12 +16,15 @@ class QuestionView extends React.Component {
       searchedQuestions: null,
       currentProductAnswers: '',
       shownQuestions: 2,
-      shownAnswers: 2
+      shownAnswers: 2,
+      addQuestionVisisble: 'hidden'
     };
 
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
     this.searchQuestionList = this.searchQuestionList.bind(this);
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
+    this.showAddQuestion = this.showAddQuestion.bind(this);
+    this.closeAddQuestion = this.closeAddQuestion.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,6 +55,10 @@ class QuestionView extends React.Component {
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { body: question.question, name: question.nickname, email: question.email, product_id: this.state.currentProductId}, { headers: {Authorization: API_KEY}})
     .then(res => { console.log(res) })
     .catch(err => { throw err; });
+
+    this.setState({
+      addQuestionVisisble: 'hidden',
+    })
   }
 
   searchQuestionList(term) {
@@ -78,18 +85,33 @@ class QuestionView extends React.Component {
     this.getCurrentQuestions(this.props.productId);
   }
 
+  showAddQuestion() {
+    this.setState({
+      addQuestionVisisble: 'visible'
+    });
+  }
+
+  closeAddQuestion() {
+    this.setState({
+      addQuestionVisisble: 'hidden'
+    })
+  }
+
 
   render() {
     if (!this.state.currentProductQuestions) {
-      return <div></div>
+      return <div data-testid='question-view'></div>
     }
 
     return (
-      <div data-testid='question-view'>
-      <QuestionSearch onSearch={this.searchQuestionList}/>
-      <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions}/>
-      <AddQuestion addQuestion={this.handleAddQuestion}/>
-      <AddAnswer />
+      <div>
+        <div data-testid='question-view' className="qaComponent">
+          <h2>Questions & Answers</h2>
+          <QuestionSearch onSearch={this.searchQuestionList}/>
+          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion}/>
+          <AddQuestion addQuestion={this.handleAddQuestion} visible={this.state.addQuestionVisisble} onClick={this.closeAddQuestion}/>
+          <AddAnswer />
+        </div>
       </div>
     );
   }

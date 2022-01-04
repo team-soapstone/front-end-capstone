@@ -4,7 +4,7 @@ h1 {
 }
 
 body {
-  max-height: 1000px;
+  min-width: 1300px;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -68,7 +68,7 @@ OVERVIEW
   /* flex: 0 0 45%; */
   justify-content: center;
   flex-direction: column;
-  
+
 }
 
 .ImageContainer {

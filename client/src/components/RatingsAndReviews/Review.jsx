@@ -17,8 +17,8 @@ const Review = ({ review }) => {
   return (
     <div>
       <div className='reviewMeta'>
-        <Ratings rating={rating}/>
-        <p className='user'>{reviewer_name}, {moment(date).format('MMM Do YYYY')}</p>
+        <Ratings className='reviewStars' rating={rating}/>
+        <p className='reviewUserDate'>{reviewer_name}, {moment(date).format('MMM Do YYYY')}</p>
       </div>
       <h4 className='reviewHeader'>{summary}</h4>
       <p className='reviewBody'>{body}</p>

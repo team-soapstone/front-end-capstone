@@ -76,17 +76,24 @@ class RatingsAndReviews extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { productRatings, currentProduct } = this.props;
     return (
-      <div>
-        <h3 className="widgetHeader">RATINGS & REVIEWS</h3>
-        <RatingBreakdown productRatings={productRatings}/>
-        <ProductBreakdown productRatings={productRatings}/>
+      <div className='widgetContainer'>
+        <h3 className='widgetHeader'>RATINGS & REVIEWS</h3>
+        <div className='breakdownReviewContainer'>
+        {productRatings &&
+          <div className='breakdownContainer'>
+            <RatingBreakdown productRatings={productRatings}/>
+            <br/>
+            <ProductBreakdown productRatings={productRatings}/>
+          </div>
+        }
         <ReviewList
+          className='reviewContainer'
           reviews={this.state.reviews.results}
           handleSort={this.handleSort}
-        />
+          />
+        </div>
       </div>
     );
   }
