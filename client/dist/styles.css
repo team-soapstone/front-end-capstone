@@ -152,6 +152,32 @@ OVERVIEW
   margin-left: 50px;
 }
 
+/* Add to Cart */
+.SelectSize {
+  font-weight: 600;
+  font-size: 110%;
+  padding: 12px 50px;
+  margin: 5px;
+}
+
+.SelectQuantity {
+  font-weight: 600;
+  font-size: 110%;
+  padding: 12px 30px;
+  margin: 5px;
+}
+
+.AddToCartButton {
+  padding: 10px 20px;
+  margin: 5px;
+}
+
+.LikeButton {
+  font-size: 150%;
+  padding: 0 20px 2px;
+  margin: 5px;
+}
+
 /* 
 ======================================
 */
