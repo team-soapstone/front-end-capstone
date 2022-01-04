@@ -17,6 +17,8 @@ const QuestionList = (props) => {
           questionId={question.question_id}
           markQuestionHelpful={props.markQuestionHelpful}
           markAnswerHelpful={props.markAnswerHelpful}
+          reportAnswer= {props.reportAnswer}
+          answerReported={props.answerReported}
         />
       ))}
       <button onClick={props.showQuestion}>Add A Question</button>
