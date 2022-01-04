@@ -221,7 +221,7 @@ RATINGS & REVIEWS
 
 .characteristicBar {
   height: 13px;
-  background: linear-gradient(to right, grey 32%, white 32%, grey 33%, grey 65%, white 65%, grey 66%);
+  background: linear-gradient(to right, grey 31%, white 31%, grey 32%, grey 68%, white 68%, grey 69%);
 }
 
 .characteristicBar:after {

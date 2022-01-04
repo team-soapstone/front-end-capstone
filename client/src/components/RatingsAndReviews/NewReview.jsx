@@ -78,6 +78,30 @@ class NewReview extends React.Component {
         <p>Email</p>
         <textarea placeholder='email'></textarea>
         <p>Please fill out the below dials!</p>
+        <p>Size</p>
+        <div>
+          <input type='radio' id='sizeOne'></input>
+          <label htmlFor='sizeOne'>Too Small</label>
+          <input type='radio' id='sizeTwo'></input>
+          <label htmlFor='sizeTwo'>Perfect</label>
+          <input type='radio' id='sizeThree'></input>
+          <label htmlFor='sizeThree'>Too Large</label>
+          <input type='radio' id='sizeFour'></input>
+        </div>
+        <p>Comfort</p>
+        <div>
+          <input type='radio' id='qualityOne'></input>
+          <label htmlFor='qualityOne'>Poor</label>
+          <input type='radio' id='qualityTwo'></input>
+          <label htmlFor='qualityTwo'>Below Average</label>
+          <input type='radio' id='qualityThree'></input>
+          <label htmlFor='qualityThree'>Expected</label>
+          <input type='radio' id='qualityFour'></input>
+          <label htmlFor='qualityFour'>Above Average</label>
+          <input type='radio' id='qualityFive'></input>
+          <label htmlFor='qualityFive'>Perfect</label>
+        </div>
+        <button>Submit Review</button>
       </form>
     );
   }
