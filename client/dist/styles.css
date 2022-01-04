@@ -297,6 +297,8 @@ RATINGS & REVIEWS
 
 #closeReviewForm {
   color: black;
+  display: flex;
+  justify-content: end;
 }
 
 #ratingStar {

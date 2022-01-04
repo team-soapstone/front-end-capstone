@@ -15,12 +15,18 @@ class RatingsAndReviews extends React.Component {
       reviews: {},
     };
     this.handleSort = this.handleSort.bind(this);
+    this.handleGetReviews = this.handleGetReviews.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     // Check on product rating as it is the latter promise that gets resolved in App
     if (this.props.productRatings !== prevProps.productRatings) {
-      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      this.handleGetReviews()
+    }
+  }
+
+  handleGetReviews() {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
       {
         headers: {Authorization: API_KEY},
         params: {
@@ -36,7 +42,6 @@ class RatingsAndReviews extends React.Component {
       .catch((error) => {
         throw error;
       })
-    }
   }
 
   getTotalReviewsCount() {
@@ -85,6 +90,7 @@ class RatingsAndReviews extends React.Component {
         <ReviewList
           currentProduct={currentProduct}
           productRatings={productRatings}
+          handleGetReviews={this.handleGetReviews}
           reviews={this.state.reviews.results}
           handleSort={this.handleSort}
           />
