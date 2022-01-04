@@ -25,6 +25,9 @@ class QuestionView extends React.Component {
     this.loadMoreQuestions = this.loadMoreQuestions.bind(this);
     this.showAddQuestion = this.showAddQuestion.bind(this);
     this.closeAddQuestion = this.closeAddQuestion.bind(this);
+    this.getCurrentQuestions = this.getCurrentQuestions.bind(this);
+    this.markQuestionHelpful = this.markQuestionHelpful.bind(this);
+    this.markAnswerHelpful = this.markAnswerHelpful.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -97,6 +100,24 @@ class QuestionView extends React.Component {
     })
   }
 
+  markQuestionHelpful(event) {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${event.target.id}/helpful`, { question_id: event.target.id}, { headers: {Authorization: API_KEY}})
+    .then((res) => console.log(res))
+    .then(() => {
+      this.getCurrentQuestions(this.props.productId);
+    })
+    .catch((err) => { throw err; });
+  }
+
+  markAnswerHelpful(event) {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/answers/${event.target.id}/helpful`, { question_id: event.target.id}, { headers: {Authorization: API_KEY}})
+    .then((res) => console.log(res))
+    .then(() => {
+      this.getCurrentQuestions(this.props.productId);
+    })
+    .catch((err) => { throw err; });
+  }
+
 
   render() {
     if (!this.state.currentProductQuestions) {
@@ -108,7 +129,7 @@ class QuestionView extends React.Component {
         <div data-testid='question-view' className="qaComponent">
           <h2>Questions & Answers</h2>
           <QuestionSearch onSearch={this.searchQuestionList}/>
-          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion}/>
+          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion} markQuestionHelpful={this.markQuestionHelpful} markAnswerHelpful={this.markAnswerHelpful}/>
           <AddQuestion addQuestion={this.handleAddQuestion} visible={this.state.addQuestionVisisble} onClick={this.closeAddQuestion}/>
           <AddAnswer />
         </div>

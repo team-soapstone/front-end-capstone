@@ -4,49 +4,9 @@ import { shallow, mount } from 'enzyme';
 
 import RatingsAndReviews from '../client/src/components/RatingsAndReviews/RatingsAndReviews.jsx'
 import API_KEY from '../config.js';
+import { exampleProducts, exampleReviewMetaData, exampleReviews } from './sampleData';
 
 jest.mock('axios');
-
-const exampleProducts = [
-  {
-    "id": '10',
-    "name": "Midnight Shades",
-    "slogan": "See the darkness",
-    "description": "So dark you won't see any lights!.",
-    "category": "Sunglasses",
-    "default_price": "1000"
-  }
-];
-
-const exampleReviewMetaData = {
-  product_id: '10',
-  ratings: { 1: '0', 2: '1', 3:'3', 4:'5', 5:'1' },
-  recommended: {},
-  characteristics: {}
-}
-
-const exampleReviews = {
-  product: '10',
-  page: '0',
-  count: '5',
-  results: [
-    {
-      review_id: '5',
-      rating: '3',
-      summary: 'I\'m enjoying wearing these shades',
-      recommended: false,
-      response: null,
-      body: 'comfortable and practical',
-      date: '2019-04-14T00:00:00.000Z',
-      reviewer_name: 'shortandsweeet',
-      helpfulness: '5',
-      photos: [{
-        id: 1,
-        url: 'urlplaceholder/review_5_photo_number_1.jpg',
-      }]
-    }
-  ]
-}
 
 const mockUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews';
 
