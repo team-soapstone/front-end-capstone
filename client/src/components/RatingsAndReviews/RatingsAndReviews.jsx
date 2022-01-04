@@ -6,13 +6,8 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 
-// create a sort component and a handleSort that will change state
-// depending on what sort option is picked,
-  // remake get request to change reviewList (in specific order)
 // create a handleFilter function that will change state (by filter for specific star)
   // make sure not to remake GET request
-
-// why is ratings count differetn from total ratings
 class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);

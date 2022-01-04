@@ -25,11 +25,60 @@ class NewReview extends React.Component {
     };
   }
 
+  handleAddReview() {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      {
+        headers: {Authorization: API_KEY},
+        params: {
+          product_id: this.props.currentProduct.id,
+          rating: 1,
+          summary: 'hi hi hi hi hi',
+          body: 'this is a lot of hi',
+          recommend: true,
+          name: 'hi man',
+          email: 'hi@hi.com',
+          photos: ['http://placeimg.com/640/480/tech'],
+          characteristics: {
+            // comfort
+            '131840': 5,
+            // fit
+            '131838': 5,
+            // length
+            '131839': 5,
+            // quality
+            '131841': 5,
+          }
+        }
+      }
+    )
+  }
+
   render() {
+    const { visible, handleClose } = this.props;
     return (
-      <div>
-        ADD A REVIEW +
-      </div>
+      <form
+        id="reviewModal"
+      >
+        <span id="closeReviewForm" onClick={handleClose}>x</span>
+        <h3>Add a review!</h3>
+        <div>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</div>
+        <p>Summary</p>
+        <textarea placeholder='summary'></textarea>
+        <p>Body</p>
+        <textarea placeholder='body'></textarea>
+        <p>Recommend</p>
+        <div>
+          <input type='radio' id='recommendYes'></input>
+          <label htmlFor='recommendYes'>Yes</label>
+          <input type='radio' id='recommendNo'></input>
+          <label htmlFor='recommendNo'>No</label>
+        </div>
+        <p>Username</p>
+        <textarea placeholder='username'></textarea>
+        <p>Email</p>
+        <textarea placeholder='email'></textarea>
+        <p>Please fill out the below dials!</p>
+      </form>
     );
   }
 }

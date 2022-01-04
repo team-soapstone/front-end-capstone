@@ -252,6 +252,27 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
+#reviewModal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  height: 750px;
+  width: 750px;
+  top: 50%;
+  left: 50%;
+  margin-top: -375px;
+  margin-left: -375px;
+  overflow: auto; /* Enable scroll if needed */
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  background-color: white;
+  opacity: 0.95;
+}
+
+#closeReviewForm {
+  color: black;
+}
+
 /*
 ======================================
 Questions & Answers
