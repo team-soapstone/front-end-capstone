@@ -78,7 +78,7 @@ class NewReview extends React.Component {
         id="reviewModal"
         onSubmit={this.handleSubmit}
       >
-        <span id="closeReviewForm" onClick={handleClose}>x</span>
+        <i id="closeReviewForm" onClick={handleClose} className="far fa-window-close"></i>
         <h3>Write your review about {currentProduct.name}</h3>
         <div
           className='star'
@@ -86,9 +86,9 @@ class NewReview extends React.Component {
         >
           {[...Array(5)].map((star, idx) => {
             if (idx < this.state.rating) {
-              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
+              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
             } else {
-              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
+              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
             }
           })}
         </div>
