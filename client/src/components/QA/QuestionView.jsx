@@ -31,7 +31,7 @@ class QuestionView extends React.Component {
     this.markAnswerHelpful = this.markAnswerHelpful.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.productId !== prevProps.productId) {
       this.setState({
         currentProductId: this.props.productId
