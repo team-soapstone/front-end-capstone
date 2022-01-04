@@ -6,6 +6,7 @@ const QuestionList = (props) => {
     return b.question_helpfulness - a.question_helpfulness;
   });
 
+
   return (
     <div>
       {sorted.map((question) => (
@@ -19,7 +20,7 @@ const QuestionList = (props) => {
         />
       ))}
       <button onClick={props.showQuestion}>Add A Question</button>
-      <button className="moreQuestionButton" onClick={props.onClick}>
+      <button className="moreQuestionButton" onClick={props.onClick} style={ {visibility: props.visible} }>
         More Answered Questions
       </button>
     </div>
