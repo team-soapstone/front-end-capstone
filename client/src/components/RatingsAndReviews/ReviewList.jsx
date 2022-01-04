@@ -48,9 +48,7 @@ class ReviewList extends React.Component {
   render() {
     // conditional for amount of reviews to render
     let list;
-    if (this.state.reviewsExist === false) {
-      list = <div></div>
-    } else {
+    if (this.state.reviewsExist !== false) {
       list = this.props.reviews.map((review, idx) => {
         if (idx < this.state.reviewsRendered) {
           return <Review
@@ -63,10 +61,12 @@ class ReviewList extends React.Component {
 
     // conditional for more review button to render
     let moreReview;
-    if (this.state.allReviewsRendered === false) {
-      moreReview = <button className='buttons' onClick={this.handleSeeMoreReviews}>MORE REVIEWS</button>
-    } else {
-      moreReview = <div></div>
+    if (this.state.allReviewsRendered === false && this.state.amountOfReviews > 2) {
+      moreReview = <button
+        className='buttons'
+        id='moreReview'
+        onClick={this.handleSeeMoreReviews}
+      >MORE REVIEWS</button>
     }
 
     return (
@@ -85,7 +85,7 @@ class ReviewList extends React.Component {
           {list}
         </div>
         {moreReview}
-        <button className='buttons'><NewReview /></button>
+        <button className='buttons' id='newReview'><NewReview /></button>
       </div>
     );
   }

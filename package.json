@@ -20,7 +20,8 @@
       "enzymeAdapter": "react15"
     },
     "modulePathIgnorePatterns": [
-      "./__tests__/setupTests.js"
+      "./__tests__/setupTests.js",
+      "./__tests__/sampleData.js"
     ]
   },
   "repository": {
