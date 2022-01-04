@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ProductBreakdown = ({ productRatings }) => {
-  console.log(productRatings);
-
   // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
   const sizeCharacteristic = Math.round(Number(productRatings.characteristics.Comfort.value))
   const sizeAnalogRatio = sizeCharacteristic / 5

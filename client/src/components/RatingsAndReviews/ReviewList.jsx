@@ -1,15 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import Review from './Review.jsx';
 import NewReview from './NewReview.jsx';
-
-// low priority - implement a keyword search
-// display 2 reviews at a time
-// if more than 2 reviews are written,
-  // render a more reviews button (if less, no button)
-  // once clicked, render 2 more additional reviews.
-  // there should be a max cap in height, that once reached a scroll bar will appear to go through all reviews
-    // sort and buttons should remain fixed outside of the  scroll
-  // if no reviews, list should collapse, then only the new review button should appear
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -18,9 +10,12 @@ class ReviewList extends React.Component {
       reviewsExist: false,
       reviewsRendered: 2,
       allReviewsRendered: false,
-      amountOfReviews: 0
+      amountOfReviews: 0,
+      reviewModalVisbility: false
     };
     this.handleSeeMoreReviews = this.handleSeeMoreReviews.bind(this);
+    this.handleOpenReviewModal = this.handleOpenReviewModal.bind(this);
+    this.handleCloseReviewModal = this.handleCloseReviewModal.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -45,7 +40,20 @@ class ReviewList extends React.Component {
     }
   }
 
+  handleOpenReviewModal() {
+    this.setState({
+      reviewModalVisbility: true
+    })
+  }
+
+  handleCloseReviewModal() {
+    this.setState({
+      reviewModalVisbility: false
+    })
+  }
+
   render() {
+    const { currentProduct, productRatings } = this.props;
     // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist !== false) {
@@ -70,7 +78,8 @@ class ReviewList extends React.Component {
     }
 
     return (
-      <div>
+
+      <div className='reviewContainer'>
         <label htmlFor='sortReviews' ></label>
         {this.state.amountOfReviews} reviews, sorted by <select
             name='sortReviews'
@@ -85,7 +94,19 @@ class ReviewList extends React.Component {
           {list}
         </div>
         {moreReview}
-        <button className='buttons' id='newReview'><NewReview /></button>
+        <button
+          className='buttons'
+          onClick={this.handleOpenReviewModal}
+          >
+          ADD A REVIEW +
+        </button>
+        {this.state.reviewModalVisbility ?
+          <NewReview
+            currentProduct={currentProduct}
+            productRatings={productRatings}
+            handleClose={this.handleCloseReviewModal}
+            visible={this.state.reviewModalVisbility}/> :
+          <div></div>}
       </div>
     );
   }

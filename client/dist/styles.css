@@ -247,7 +247,7 @@ RATINGS & REVIEWS
 
 .characteristicBar {
   height: 13px;
-  background: linear-gradient(to right, grey 32%, white 32%, grey 33%, grey 65%, white 65%, grey 66%);
+  background: linear-gradient(to right, grey 31%, white 31%, grey 32%, grey 68%, white 68%, grey 69%);
 }
 
 .characteristicBar:after {
@@ -258,6 +258,10 @@ RATINGS & REVIEWS
 .characteristicDescription {
   display: flex;
   justify-content: space-between;
+}
+
+.reviewContainer {
+  width: 825px;
 }
 
 .reviewList {
@@ -272,6 +276,31 @@ RATINGS & REVIEWS
 .reviewMeta {
   display: flex;
   justify-content: space-between;
+}
+
+#reviewModal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  height: 750px;
+  width: 750px;
+  top: 50%;
+  left: 50%;
+  margin-top: -375px;
+  margin-left: -375px;
+  overflow: auto; /* Enable scroll if needed */
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  background-color: white;
+  opacity: 0.95;
+}
+
+#closeReviewForm {
+  color: black;
+}
+
+#ratingStar {
+  display: flex;
 }
 
 /*

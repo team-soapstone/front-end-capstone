@@ -1,35 +1,167 @@
 import React from 'react';
-// render a button that will always be available
-// when clicked, render a modal window (focus)
-  // title it Write Your Review, with subtitle About the {Product Name Here}
-  // if mandatory, include an asterisk
-  // Overall rating Mandatory - click on 5 stars (no partial). Fill appropriately
-  // Recommend Product Mandatory - Yes or No
-  // Characteristics Mandatory - Check mandatory chart
-  // Review Summary text input - Paragraph with a placeholder text 'Example: Best purchase ever!' up to 60 chars
-  // Review Body Mandatory - Paragraph with placeholder text 'Why did you like the product or not?' Allows up to 1000 chars. Review must be 50 chars long. If tries to submit, it sohuld fail, similar to a blank mandatory field. Create a counter to let how many characters are needed to reach
-  // Photo upload utility
-  // Nickname Mandaotry - text input allowing up to 60 chars. Put text below 'For Privacy reasons, do not use your full name or email address'
-  // Your email mandatory - your email example, 'For authentication reasons, you will not be emailed'
-  // Submit review - A button that will submit
-    // if invalid the submission should be prevented with a warning.
-      // If mandatory fields are blank
-      // review body is < 50 chars
-      // email address is not proper email format
-      // images selected are invalid or unable to be uploaded
+import axios from 'axios';
+import API_KEY from '../../../../config.js';
+
 class NewReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newReview: {}
+      rating: 0,
+      summary: '',
+      body: '',
+      recommend: true,
+      username: '',
+      email: '',
+      size: 1,
+      quality: 1
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStarRender = this.handleStarRender.bind(this);
+    this.handleReviewFormUpdates = this.handleReviewFormUpdates.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    const data = {
+      product_id: this.props.currentProduct.id,
+      rating: this.state.rating,
+      summary: this.state.summary,
+      body: this.state.body,
+      recommend: this.state.recommend,
+      name: this.state.username,
+      email: this.state.email,
+      photos: ['http://placeimg.com/640/480/tech'],
+      characteristics: {
+        // size / fit
+        131838: Number(this.state.size),
+        // quality
+        131841: Number(this.state.quality),
+      }
+    }
+    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+    //   { data: {} },
+    //   { headers: {Authorization: API_KEY} }
+    // )
+    // .then((response) => {
+    //   console.log(response);
+    // })
+    // .catch((error) => {
+    //   throw error;
+    // })
+    // axios({
+    //   method: 'post',
+    //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+    //   headers: { Authorization: API_KEY },
+    //   data: data
+    // })
+  }
+
+  handleStarRender(value) {
+    this.setState({
+      rating: value
+    })
+  }
+
+  handleReviewFormUpdates(e) {
+    if (e.target.type === 'radio') {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    } else {
+      this.setState({
+        [e.target.id]: e.target.value
+      })
+    }
   }
 
   render() {
+    const { visible, handleClose, currentProduct, productRatings } = this.props;
     return (
-      <div>
-        ADD A REVIEW +
-      </div>
+      <form
+        id="reviewModal"
+        onSubmit={this.handleSubmit}
+      >
+        <span id="closeReviewForm" onClick={handleClose}>x</span>
+        <h3>Write your review about {currentProduct.name}</h3>
+        <div
+          className='star'
+          id='ratingStar'
+        >
+          {[...Array(5)].map((star, idx) => {
+            if (idx < this.state.rating) {
+              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
+            } else {
+              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
+            }
+          })}
+        </div>
+
+        <p>Summary</p>
+        <textarea
+          placeholder='Best purchase ever!'
+          id='summary'
+          onChange={this.handleReviewFormUpdates}
+          value={this.state.summary}
+        ></textarea>
+
+        <p>Body</p>
+        <textarea
+          placeholder='Why did you like the product or not?'
+          id='body'
+          onChange={this.handleReviewFormUpdates}
+          value={this.state.body}
+        ></textarea>
+
+        <p>Recommend</p>
+        <div>
+          <input type='radio' name='recommend' id='recommendYes' value='true' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='recommendYes'>Yes</label>
+          <input type='radio' name='recommend' id='recommendNo' value='false' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='recommendNo'>No</label>
+        </div>
+
+        <p>Username</p>
+        <textarea
+          placeholder='For Privacy reasons, do not use your full name or email address.'
+          id='username'
+          onChange={this.handleReviewFormUpdates}
+          value={this.state.username}
+        ></textarea>
+
+        <p>Email</p>
+        <textarea
+          placeholder='For authentication reasons, you will not be emailed.'
+          id='email'
+          onChange={this.handleReviewFormUpdates}
+          value={this.state.email}
+        ></textarea>
+
+        <p>Please fill out the below dials!</p>
+        <p>Size</p>
+        <div>
+          <input type='radio' name='size' id='sizeOne' value='1' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='sizeOne'>Too Small</label>
+          <input type='radio' name='size' id='sizeTwo' value='3' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='sizeTwo'>Perfect</label>
+          <input type='radio' name='size' id='sizeThree' value='5' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='sizeThree'>Too Large</label>
+        </div>
+        <p>Quality</p>
+        <div>
+          <input type='radio' name='quality' id='qualityOne' value='1' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='qualityOne'>Poor</label>
+          <input type='radio' name='quality' id='qualityTwo' value='2' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='qualityTwo'>Below Average</label>
+          <input type='radio' name='quality' id='qualityThree' value='3' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='qualityThree'>Expected</label>
+          <input type='radio' name='quality' id='qualityFour' value='4' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='qualityFour'>Above Average</label>
+          <input type='radio' name='quality' id='qualityFive' value='5' onChange={this.handleReviewFormUpdates}></input>
+          <label htmlFor='qualityFive'>Perfect</label>
+        </div>
+        <br/>
+        <button type='submit'>Submit Review</button>
+      </form>
     );
   }
 }
