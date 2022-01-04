@@ -291,12 +291,15 @@ RATINGS & REVIEWS
   display: flex;
   flex-direction: column;
   border-style: solid;
+  padding: 10px;
   background-color: white;
   opacity: 0.95;
 }
 
 #closeReviewForm {
   color: black;
+  display: flex;
+  justify-content: end;
 }
 
 #ratingStar {
