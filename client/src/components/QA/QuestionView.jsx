@@ -99,9 +99,9 @@ class QuestionView extends React.Component {
   loadMoreQuestions() {
     this.setState({
       shownQuestions: this.state.shownQuestions + 2
+    }, () => {
+      this.getCurrentQuestions(this.props.productId);
     });
-
-    this.getCurrentQuestions(this.props.productId);
   }
 
   showAddQuestion() {
