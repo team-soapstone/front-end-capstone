@@ -16,7 +16,8 @@ const QuestionItem = ({
   closeAddAnswer,
   handleSubmitAnswer,
   showMoreAnswers,
-  showLessAnswers
+  showLessAnswers,
+  expandAnswers
 }) => {
   let container = [];
 
@@ -27,6 +28,9 @@ const QuestionItem = ({
   let sortedContainer = container.sort((a, b) => {
     return b[1].helpfulness - a[1].helpfulness;
   });
+
+  let answerContainer = expandAnswers.includes(Number(questionId)) ? sortedContainer : sortedContainer.slice(0, answerLimit);
+
 
 
   return (
@@ -50,7 +54,7 @@ const QuestionItem = ({
         </div>
       </div>
       <div>
-        {sortedContainer.slice(0, answerLimit).map((answer) => {
+        {answerContainer.map((answer) => {
           return (
             <p
               style={{ fontSize: "13px" }}
@@ -83,7 +87,8 @@ const QuestionItem = ({
           );
         })}
       </div>
-      <span style={ {fontWeight: '550', textDecoration: 'underline'} } className='clickable' onClick={sortedContainer.slice(0, answerLimit).length < sortedContainer.length ? () => { showMoreAnswers(sortedContainer.length) } : showLessAnswers }>{sortedContainer.slice(0, answerLimit).length < sortedContainer.length ? 'See More Answers' : sortedContainer.slice(0, answerLimit).length > 2 ? 'Collapse Answers' : ''}</span>
+      <span id={questionId} style={ {fontWeight: '550', textDecoration: 'underline'} } className='clickable' onClick={expandAnswers.includes(Number(questionId)) ? showLessAnswers : showMoreAnswers }>{sortedContainer.length <= 2 ? '' : expandAnswers.includes(Number(questionId)) ? 'Collapse Answers' : 'See More Answers'}</span>
+
       <AddAnswer questionId={questionId} productName={productName} questionBody={question.question_body} addAnswerTo={addAnswerTo} onClick={closeAddAnswer} onSubmit={handleSubmitAnswer}/>
     </div>
   );

@@ -26,6 +26,7 @@ const QuestionList = (props) => {
           handleSubmitAnswer={props.handleSubmitAnswer}
           showMoreAnswers={props.showMoreAnswers}
           showLessAnswers={props.showLessAnswers}
+          expandAnswers={props.expandAnswers}
         />
       ))}
       <div className="questionButtons">
