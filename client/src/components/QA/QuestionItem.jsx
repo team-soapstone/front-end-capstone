@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import AddAnswer from './AddAnswer.jsx';
 
 const QuestionItem = ({
   question,
@@ -9,6 +10,13 @@ const QuestionItem = ({
   markAnswerHelpful,
   reportAnswer,
   answerReported,
+  productName,
+  addAnswerTo,
+  showAddAnswer,
+  closeAddAnswer,
+  handleSubmitAnswer,
+  showMoreAnswers,
+  showLessAnswers
 }) => {
   let container = [];
 
@@ -19,6 +27,8 @@ const QuestionItem = ({
   let sortedContainer = container.sort((a, b) => {
     return b[1].helpfulness - a[1].helpfulness;
   });
+
+
   return (
     <div className="questionItem">
       <div id="questionHeader">
@@ -34,7 +44,7 @@ const QuestionItem = ({
             Yes
           </span>
           ({question.question_helpfulness})&nbsp; | &nbsp;
-          <span className="clickable" style={{ textDecoration: "underline" }}>
+          <span id={questionId} className="clickable" style={{ textDecoration: "underline" }} onClick={showAddAnswer}>
             Add Answer
           </span>
         </div>
@@ -73,6 +83,8 @@ const QuestionItem = ({
           );
         })}
       </div>
+      <span style={ {fontWeight: '550', textDecoration: 'underline'} } className='clickable' onClick={sortedContainer.slice(0, answerLimit).length < sortedContainer.length ? () => { showMoreAnswers(sortedContainer.length) } : showLessAnswers }>{sortedContainer.slice(0, answerLimit).length < sortedContainer.length ? 'See More Answers' : sortedContainer.slice(0, answerLimit).length > 2 ? 'Collapse Answers' : ''}</span>
+      <AddAnswer questionId={questionId} productName={productName} questionBody={question.question_body} addAnswerTo={addAnswerTo} onClick={closeAddAnswer} onSubmit={handleSubmitAnswer}/>
     </div>
   );
 };
