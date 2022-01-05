@@ -13,14 +13,30 @@ class RatingsAndReviews extends React.Component {
     super(props);
     this.state = {
       reviews: {},
+      filterStatus: false,
+      filteredReviews: {},
+      filter: {
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false
+      }
     };
     this.handleSort = this.handleSort.bind(this);
+    this.handleGetReviews = this.handleGetReviews.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     // Check on product rating as it is the latter promise that gets resolved in App
     if (this.props.productRatings !== prevProps.productRatings) {
-      axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      this.handleGetReviews()
+    }
+  }
+
+  handleGetReviews() {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
       {
         headers: {Authorization: API_KEY},
         params: {
@@ -36,7 +52,6 @@ class RatingsAndReviews extends React.Component {
       .catch((error) => {
         throw error;
       })
-    }
   }
 
   getTotalReviewsCount() {
@@ -69,6 +84,48 @@ class RatingsAndReviews extends React.Component {
       })
   }
 
+  handleFilter(e) {
+    const ratingToToggle = e.target.value;
+    Promise.resolve(this.setState((prevState) => {
+      return {
+        filter: {
+          ...prevState.filter,
+          [ratingToToggle]: !prevState.filter[ratingToToggle]
+        }
+      }})
+    )
+    .then(() => {
+      // if all ratings are toggled false, set filterStatus to false to render original reviewList
+      if (Object.values(this.state.filter).every(v => v === false)) {
+        this.setState({
+          filterStatus: false
+        })
+      } else {
+        this.setState({
+          filterStatus: true,
+          filteredReviews: {...this.state.reviews}
+        })
+      }
+    })
+    .then(() => {
+      if (this.state.filterStatus === true) {
+        // filter the rewviews for rating filter toggled true
+        const filteredReviewList = this.state.reviews.results.filter((review) => {
+          // return if rating is true wtihin state
+          return this.state.filter[review.rating] === true;
+        })
+        this.setState((prevState) => {
+          return {
+            filteredReviews: {
+              ...prevState.fileredReviews,
+              results: filteredReviewList
+            }
+          }
+        })
+      }
+    })
+  }
+
   render() {
     const { productRatings, currentProduct } = this.props;
     return (
@@ -77,7 +134,11 @@ class RatingsAndReviews extends React.Component {
         <div className='breakdownReviewContainer'>
         {productRatings &&
           <div className='breakdownContainer'>
-            <RatingBreakdown productRatings={productRatings}/>
+            <RatingBreakdown
+              productRatings={productRatings}
+              handleFilter={this.handleFilter}
+              filter={this.state.filter}
+            />
             <br/>
             <ProductBreakdown productRatings={productRatings}/>
           </div>
@@ -85,7 +146,8 @@ class RatingsAndReviews extends React.Component {
         <ReviewList
           currentProduct={currentProduct}
           productRatings={productRatings}
-          reviews={this.state.reviews.results}
+          handleGetReviews={this.handleGetReviews}
+          reviews={this.state.filterStatus ? this.state.filteredReviews.results : this.state.reviews.results}
           handleSort={this.handleSort}
           />
         </div>

@@ -19,12 +19,22 @@ const QuestionList = (props) => {
           markAnswerHelpful={props.markAnswerHelpful}
           reportAnswer= {props.reportAnswer}
           answerReported={props.answerReported}
+          productName={props.productName}
+          addAnswerTo={props.addAnswerTo}
+          showAddAnswer={props.showAddAnswer}
+          closeAddAnswer={props.closeAddAnswer}
+          handleSubmitAnswer={props.handleSubmitAnswer}
+          showMoreAnswers={props.showMoreAnswers}
+          showLessAnswers={props.showLessAnswers}
+          expandAnswers={props.expandAnswers}
         />
       ))}
-      <button onClick={props.showQuestion}>Add A Question</button>
-      <button className="moreQuestionButton" onClick={props.onClick} style={ {visibility: props.visible} }>
-        More Answered Questions
-      </button>
+      <div className="questionButtons">
+        <button id="questionButton" onClick={props.showQuestion}>Add A Question</button>
+        <button id="questionButton" onClick={props.onClick} style={ {visibility: props.visible} }>
+          More Answered Questions
+        </button>
+      </div>
     </div>
   );
 };

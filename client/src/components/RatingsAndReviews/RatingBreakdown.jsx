@@ -5,7 +5,7 @@ import ratingAverage from '../util/ratingAverage.js';
 // may need to change this into a stateful component to keep track of toggleStatus
 // implement onClick eventhandler to change the text within button to bold
 
-const RatingBreakdown = ({ productRatings }) => {
+const RatingBreakdown = ({ productRatings, handleFilter, filter }) => {
   const averageRating = Number(ratingAverage(productRatings.ratings));
   const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
     return Number(init) + Number(current);
@@ -33,6 +33,9 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='fiveStarRow'>
             <td><button
               className='ratingFilterButton'
+              value='5'
+              onClick={handleFilter}
+              style={filter[5] ? { 'fontWeight': 'bold'} : {}}
             >5 star</button></td>
             <td className='barContainer'><div
               id='fiveStarBar'
@@ -43,6 +46,9 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='fourStarRow'>
             <td><button
               className='ratingFilterButton'
+              value='4'
+              onClick={handleFilter}
+              style={filter[4] ? { 'fontWeight': 'bold'} : {}}
             >4 star</button></td>
             <td className='barContainer'><div
               id='fourStarBar'
@@ -53,6 +59,9 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='threeStarRow'>
             <td><button
               className='ratingFilterButton'
+              value='3'
+              onClick={handleFilter}
+              style={filter[3] ? { 'fontWeight': 'bold'} : {}}
             >3 star</button></td>
             <td className='barContainer'><div
               id='threeStarBar'
@@ -63,6 +72,9 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='twoStarRow'>
             <td><button
               className='ratingFilterButton'
+              value='2'
+              onClick={handleFilter}
+              style={filter[2] ? { 'fontWeight': 'bold'} : {}}
             >2 star</button></td>
             <td className='barContainer'><div
               id='twoStarBar'
@@ -73,6 +85,9 @@ const RatingBreakdown = ({ productRatings }) => {
           <tr className='oneStarRow'>
             <td><button
               className='ratingFilterButton'
+              value='1'
+              onClick={handleFilter}
+              style={filter[1] ? { 'fontWeight': 'bold'} : {}}
             >1 star</button></td>
             <td className='barContainer'><div
               id='oneStarBar'

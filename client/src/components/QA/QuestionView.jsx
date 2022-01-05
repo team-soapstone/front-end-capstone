@@ -19,7 +19,9 @@ class QuestionView extends React.Component {
       shownAnswers: 2,
       addQuestionVisisble: 'hidden',
       moreQuestionsVisible: 'visible',
-      answerReported: []
+      answerReported: [],
+      addAnswerTo: 0,
+      expandAnswers: []
     };
 
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
@@ -31,6 +33,11 @@ class QuestionView extends React.Component {
     this.markQuestionHelpful = this.markQuestionHelpful.bind(this);
     this.markAnswerHelpful = this.markAnswerHelpful.bind(this);
     this.reportAnswer = this.reportAnswer.bind(this);
+    this.showAddAnswer = this.showAddAnswer.bind(this);
+    this.closeAddAnswer = this.closeAddAnswer.bind(this);
+    this.handleSubmitAnswer = this.handleSubmitAnswer.bind(this);
+    this.showMoreAnswers = this.showMoreAnswers.bind(this);
+    this.showLessAnswers = this.showLessAnswers.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -44,7 +51,7 @@ class QuestionView extends React.Component {
   }
 
 
-  getCurrentQuestions(id) {
+  getCurrentQuestions(id){
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions', { headers: {Authorization: API_KEY}, params: {product_id: id, count: this.state.shownQuestions}})
       .then((response) => {
         if ((response.data.results.length > 4) && (JSON.stringify(response.data.results) === JSON.stringify(this.state.currentProductQuestions))) {
@@ -93,9 +100,9 @@ class QuestionView extends React.Component {
   loadMoreQuestions() {
     this.setState({
       shownQuestions: this.state.shownQuestions + 2
+    }, () => {
+      this.getCurrentQuestions(this.props.productId);
     });
-
-    this.getCurrentQuestions(this.props.productId);
   }
 
   showAddQuestion() {
@@ -139,6 +146,39 @@ class QuestionView extends React.Component {
     .catch((err) => { throw err; });
   }
 
+  showAddAnswer(event) {
+    this.setState({addAnswerTo: event.target.id });
+  }
+
+  closeAddAnswer() {
+    this.setState({ addAnswerTo: 0 });
+  }
+
+  handleSubmitAnswer(answer) {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/qa/questions/${answer.questionId}/answers`, { body: answer.answer, name: answer.username, email: answer.email, photos: answer.images}, {headers: {Authorization: API_KEY}})
+    .then(res => console.log(res))
+    .then(() => {
+      this.getCurrentQuestions(this.state.currentProductId);
+    })
+    .catch((err) => { throw err; });
+  }
+
+  showMoreAnswers(event) {
+    let container = [...this.state.expandAnswers, Number(event.target.id)]
+    this.setState({
+      expandAnswers: container
+    });
+  }
+
+  showLessAnswers(event) {
+    let idx = this.state.expandAnswers.indexOf(Number(event.target.id));
+
+    let container = this.state.expandAnswers.splice(idx, 1)
+    this.setState({
+      expandedAnswers: container
+    });
+  }
+
 
   render() {
     if (!this.state.currentProductQuestions) {
@@ -150,9 +190,8 @@ class QuestionView extends React.Component {
         <div data-testid='question-view' className="qaComponent">
           <h2>Questions & Answers</h2>
           <QuestionSearch onSearch={this.searchQuestionList}/>
-          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion} markQuestionHelpful={this.markQuestionHelpful} markAnswerHelpful={this.markAnswerHelpful} visible={this.state.moreQuestionsVisible} reportAnswer={this.reportAnswer} answerReported={this.state.answerReported}/>
+          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion} markQuestionHelpful={this.markQuestionHelpful} markAnswerHelpful={this.markAnswerHelpful} visible={this.state.moreQuestionsVisible} reportAnswer={this.reportAnswer} answerReported={this.state.answerReported} productName={this.props.productName} addAnswerTo={this.state.addAnswerTo} showAddAnswer={this.showAddAnswer} closeAddAnswer={this.closeAddAnswer} handleSubmitAnswer={this.handleSubmitAnswer} showMoreAnswers={this.showMoreAnswers} showLessAnswers={this.showLessAnswers} expandAnswers={this.state.expandAnswers}/>
           <AddQuestion addQuestion={this.handleAddQuestion} visible={this.state.addQuestionVisisble} onClick={this.closeAddQuestion}/>
-          <AddAnswer />
         </div>
       </div>
     );

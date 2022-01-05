@@ -94,6 +94,35 @@ OVERVIEW
   border: solid 4px transparent;
   max-width: 100%;
   max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.ImageModal {
+  /* flex-direction: column; */
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  z-index: 1;
+  left: 10%;
+  border-radius: 1em;
+  padding: 0px;
+}
+.SelectedImageModal {
+  max-width:90%;
+  max-height:95%;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.fa-times-circle {
+  display: inline-block;
+  right: -1px;
+  position: absolute;
+  color: white;
 }
 
 .ThumbnailContainer {
@@ -214,6 +243,47 @@ OVERVIEW
   margin: 5px;
 }
 
+/* Share */
+.ShareComponent {
+  display: flex;
+  justify-content:space-around;
+  margin: 5px;
+}
+
+.ShareComponent i {
+  transition: 500ms;
+}
+
+.ShareComponent i:hover {
+  transform: scale(1.2);
+}
+
+.ShareComponent i:active {
+  transform: scale(0.9);
+}
+
+.ShareComponent .fa-facebook {
+  color: #3b5998;
+}
+
+.ShareComponent .fa-instagram {
+  color: transparent;
+  background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -o-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.ShareComponent .fa-pinterest {
+  color: #e60023;
+}
+
+.ShareComponent .fa-creative-commons-share {
+  color: #00112c;
+}
+
 /*
 ======================================
 RATINGS & REVIEWS
@@ -296,8 +366,9 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
-.reviewContainer {
+.reviewListContainer {
   width: 825px;
+  height: 500px;
 }
 
 .reviewList {
@@ -314,29 +385,57 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
+.reviewContainer {
+  border-bottom: solid;
+  border-width: thin;
+}
+
+.reviewPhotosThumbnail {
+  width: 50px;
+  height: 50px;
+}
+
 #reviewModal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  height: 750px;
-  width: 750px;
+  height: 800px;
+  width: 500px;
   top: 50%;
   left: 50%;
-  margin-top: -375px;
-  margin-left: -375px;
+  margin-top: -400px;
+  margin-left: -250px;
   overflow: auto; /* Enable scroll if needed */
   display: flex;
   flex-direction: column;
   border-style: solid;
+  padding: 10px;
   background-color: white;
   opacity: 0.95;
 }
 
 #closeReviewForm {
   color: black;
+  display: flex;
+  justify-content: end;
 }
 
 #ratingStar {
   display: flex;
+}
+
+.reviewButtonsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.reviewButtons {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
 }
 
 /*
@@ -427,6 +526,27 @@ Questions & Answers
   cursor: pointer;
 }
 
+.questionButtons {
+  display: flex;
+  width: 70.5%;
+  justify-content: center;
+}
+
+#questionButton {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+}
+
+#questionButton:hover {
+  cursor: pointer;
+  background-color: #ececec;
+}
+
 #addQuestionSubmit {
   margin-bottom: 15px;
 }
@@ -441,6 +561,6 @@ Questions & Answers
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* #questionHeader {
-  text-align: center;
-} */
+
+
+

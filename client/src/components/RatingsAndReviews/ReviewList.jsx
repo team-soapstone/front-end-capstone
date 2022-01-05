@@ -53,7 +53,7 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    const { currentProduct, productRatings } = this.props;
+    const { reviews, currentProduct, productRatings, handleGetReviews } = this.props;
     // conditional for amount of reviews to render
     let list;
     if (this.state.reviewsExist !== false) {
@@ -71,15 +71,14 @@ class ReviewList extends React.Component {
     let moreReview;
     if (this.state.allReviewsRendered === false && this.state.amountOfReviews > 2) {
       moreReview = <button
-        className='buttons'
+        className='reviewButtons'
         id='moreReview'
         onClick={this.handleSeeMoreReviews}
       >MORE REVIEWS</button>
     }
 
     return (
-
-      <div className='reviewContainer'>
+      <div className='reviewListContainer'>
         <label htmlFor='sortReviews' ></label>
         {this.state.amountOfReviews} reviews, sorted by <select
             name='sortReviews'
@@ -93,17 +92,20 @@ class ReviewList extends React.Component {
         <div className='reviewList'>
           {list}
         </div>
-        {moreReview}
-        <button
-          className='buttons'
-          onClick={this.handleOpenReviewModal}
-          >
-          ADD A REVIEW +
-        </button>
+        <div className='reviewButtonsContainer'>
+          {moreReview}
+          <button
+            className='reviewButtons'
+            onClick={this.handleOpenReviewModal}
+            >
+            ADD A REVIEW +
+          </button>
+        </div>
         {this.state.reviewModalVisbility ?
           <NewReview
             currentProduct={currentProduct}
             productRatings={productRatings}
+            handleGetReviews={handleGetReviews}
             handleClose={this.handleCloseReviewModal}
             visible={this.state.reviewModalVisbility}/> :
           <div></div>}

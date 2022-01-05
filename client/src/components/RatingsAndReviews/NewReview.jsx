@@ -27,33 +27,28 @@ class NewReview extends React.Component {
       rating: this.state.rating,
       summary: this.state.summary,
       body: this.state.body,
-      recommend: this.state.recommend,
+      recommend: true,
       name: this.state.username,
       email: this.state.email,
       photos: ['http://placeimg.com/640/480/tech'],
       characteristics: {
         // size / fit
-        131838: Number(this.state.size),
+        131838: this.state.size,
         // quality
-        131841: Number(this.state.quality),
+        131841: this.state.quality,
       }
     }
-    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
-    //   { data: {} },
-    //   { headers: {Authorization: API_KEY} }
-    // )
-    // .then((response) => {
-    //   console.log(response);
-    // })
-    // .catch((error) => {
-    //   throw error;
-    // })
-    // axios({
-    //   method: 'post',
-    //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
-    //   headers: { Authorization: API_KEY },
-    //   data: data
-    // })
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
+      data,
+      { headers: { Authorization: API_KEY} }
+    )
+    .then((response) => {
+      this.props.handleGetReviews();
+      this.props.handleClose();
+    })
+    .catch((error) => {
+      throw error;
+    })
   }
 
   handleStarRender(value) {
@@ -65,7 +60,8 @@ class NewReview extends React.Component {
   handleReviewFormUpdates(e) {
     if (e.target.type === 'radio') {
       this.setState({
-        [e.target.name]: e.target.value
+        // only JSON parse: numbers or booleans wrapped in quotes
+        [e.target.name]: JSON.parse(e.target.value)
       })
     } else {
       this.setState({
@@ -81,7 +77,7 @@ class NewReview extends React.Component {
         id="reviewModal"
         onSubmit={this.handleSubmit}
       >
-        <span id="closeReviewForm" onClick={handleClose}>x</span>
+        <i id="closeReviewForm" onClick={handleClose} className="far fa-window-close"></i>
         <h3>Write your review about {currentProduct.name}</h3>
         <div
           className='star'
@@ -89,9 +85,9 @@ class NewReview extends React.Component {
         >
           {[...Array(5)].map((star, idx) => {
             if (idx < this.state.rating) {
-              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
+              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
             } else {
-              return <div key={idx} value={idx + 1} onMouseOver={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
+              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
             }
           })}
         </div>
@@ -160,7 +156,7 @@ class NewReview extends React.Component {
           <label htmlFor='qualityFive'>Perfect</label>
         </div>
         <br/>
-        <button type='submit'>Submit Review</button>
+        <button className='reviewButtons' type='submit'>Submit Review</button>
       </form>
     );
   }

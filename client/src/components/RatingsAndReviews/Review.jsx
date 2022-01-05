@@ -7,15 +7,20 @@ import moment from 'moment';
 const Review = ({ review }) => {
   const { reviewer_name, rating, date, summary, body, photos, recommend, response, helpfulness } = review;
   let photoRender;
+
   if (photos.length > 0) {
-    photoRender = <li>
+    photoRender = <div>
       {photos.map((photo, idx) => {
-        return <ul key={`${reviewer_name}_idx`}>photo</ul>
+        return <img
+          className='reviewPhotosThumbnail'
+          key={`${reviewer_name}_idx`}
+          src={photo.url}
+          alt='review photo'></img>
       })}
-    </li>
+    </div>
   }
   return (
-    <div>
+    <div className='reviewContainer'>
       <div className='reviewMeta'>
         <Ratings className='reviewStars' rating={rating}/>
         <p className='reviewUserDate'>{reviewer_name}, {moment(date).format('MMM Do YYYY')}</p>
