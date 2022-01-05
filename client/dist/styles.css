@@ -496,6 +496,16 @@ Questions & Answers
   justify-content: center;
 }
 
+#questionButton {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+}
+
 #questionButton:hover {
   cursor: pointer;
   background-color: #ececec;

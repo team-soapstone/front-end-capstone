@@ -29,8 +29,8 @@ const QuestionList = (props) => {
         />
       ))}
       <div className="questionButtons">
-        <button className="reviewButtons" id="questionButton" onClick={props.showQuestion}>Add A Question</button>
-        <button className="reviewButtons" id="questionButton" onClick={props.onClick} style={ {visibility: props.visible} }>
+        <button id="questionButton" onClick={props.showQuestion}>Add A Question</button>
+        <button id="questionButton" onClick={props.onClick} style={ {visibility: props.visible} }>
           More Answered Questions
         </button>
       </div>
