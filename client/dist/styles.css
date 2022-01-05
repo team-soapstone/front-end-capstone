@@ -496,6 +496,11 @@ Questions & Answers
   justify-content: center;
 }
 
+.answerImg {
+  height: 7%;
+  width: 7%;
+}
+
 #questionButton {
   text-transform: uppercase;
   font-size: large;
