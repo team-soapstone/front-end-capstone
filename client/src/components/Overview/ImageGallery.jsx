@@ -38,13 +38,16 @@ class ImageGallery extends React.Component {
   }
 
   handleCarouselNext() {
-    const carousel = document.querySelector('.ThumbnailCarouselContainer');
-    carousel.style.transform = `translateX(-50px)`;
+    if (this.props.selectedStylePhotos.length > 6) {
+      const track = document.querySelector('.ThumbnailCarouselTrack');
+      const carouselWidth = document.querySelector('.ThumbnailContainer').offsetWidth;
+      track.style.transform = `translateX(-${carouselWidth}px)`;
+    }
   }
 
   handleCarouselPrevious() {
-    const carousel = document.querySelector('.ThumbnailCarouselContainer');
-    carousel.style.transform = `translateX(50px)`;
+    const track = document.querySelector('.ThumbnailCarouselTrack');
+    track.style.transform = `translateX(0)`;
   }
 
   render() {
@@ -58,19 +61,23 @@ class ImageGallery extends React.Component {
           <button onClick={this.handleNextImage.bind(this)}>&gt;</button>
         </div>
         <div className="ThumbnailContainer">
-          <button onClick={this.handleCarouselPrevious}>prev</button>
           <div className="ThumbnailCarouselContainer">
-          {this.props.selectedStylePhotos.map((photo, i) => (
-            <img
-              style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
-              key={i}
-              className="ThumbnailImage"
-              src={photo.thumbnail_url}
-              onClick={() => this.handleSelectImage(photo.url, i)}
-            />
-          ))}
+            <div className="ThumbnailCarouselTrack">
+            {this.props.selectedStylePhotos.map((photo, i) => (
+              <img
+                style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
+                key={i}
+                className="ThumbnailImage"
+                src={photo.thumbnail_url}
+                onClick={() => this.handleSelectImage(photo.url, i)}
+              />
+            ))}
+            </div>
           </div>
-          <button onClick={this.handleCarouselNext}>next</button>
+          <div className="CarouselNav">
+            <i className="fas fa-angle-left fa-2x" onClick={this.handleCarouselPrevious} />
+            <i className="fas fa-angle-right fa-2x" onClick={this.handleCarouselNext} />
+          </div>
         </div>
       </div>
     );

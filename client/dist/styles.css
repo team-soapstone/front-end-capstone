@@ -73,7 +73,7 @@ OVERVIEW
 
 .ImageContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .ImageContainer button {
@@ -86,7 +86,7 @@ OVERVIEW
 .SelectedImageContainer {
   display: flex;
   justify-content: center;
-  width: 505px;
+  width: 600px;
   height: 542px;
 }
 
@@ -97,25 +97,51 @@ OVERVIEW
 }
 
 .ThumbnailContainer {
-  display: flex;
-  justify-content: center;
+  width: 600px;
+  height: 90px;
+  position: relative;
+  align-self: center;
 }
 
 .ThumbnailCarouselContainer {
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-self: center;
-  height: 80px;
-  width: 420px;
   overflow: hidden;
+}
+
+.ThumbnailCarouselTrack {
+  display: flex;
+  transition: transform 0.5s;
 }
 
 .ThumbnailImage {
   border: solid 4px transparent;
   flex-shrink: 0;
-  width: 52px;
-  height: 72px;
+  width: 100px;
+  height: 80px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.CarouselNav i {
+  position: absolute;
+  top: 27%;
+}
+
+.CarouselNav i:hover {
+  transform: scale(1.2);
+  transition: transform 0.25s;
+}
+
+.CarouselNav i:active {
+  transform: scale(0.9);
+  transition: transform 0.25s;
+}
+
+.CarouselNav .fa-angle-left {
+  left: -18px;
+}
+
+.CarouselNav .fa-angle-right {
+  right: -18px;
 }
 
 /* Style Selector */
