@@ -66,7 +66,7 @@ const QuestionItem = ({
               <div className="pictureContainer">
               {
                 answer[1].photos.map((url) => {
-                  return ( <img className="answerImg" key={url} src={url}/>)
+                  return ( <img className="answerImg" key={url} src={url} alt="user-submitted answer image"/>)
                 })
               }
               </div>
