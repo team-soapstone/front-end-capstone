@@ -54,13 +54,13 @@ const QuestionItem = ({
       </div>
       <div>
         {answerContainer.map((answer) => {
-          console.log('KYE', answer[1].photos);
           return (
-            <p
+            <div
               style={{ fontSize: "13px" }}
               key={answer[1].id}
               className="answer"
             >
+              <br/>
               A: {answer[1].body}
               <br />
               <div className="pictureContainer">
@@ -90,7 +90,7 @@ const QuestionItem = ({
               >
                 {answerReported.includes(answer[1].id) ? "Reported" : "Report"}
               </span>
-            </p>
+            </div>
           );
         })}
       </div>

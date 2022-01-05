@@ -425,6 +425,7 @@ Questions & Answers
   border: 1px dotted black;
   margin-top: 5px;
   width: 70.5%;
+  overflow: visible;
 }
 
 .questionText {
@@ -499,6 +500,12 @@ Questions & Answers
 .answerImg {
   height: 7%;
   width: 7%;
+  padding: 2px;
+}
+
+.pictureContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 #questionButton {
