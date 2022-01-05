@@ -21,7 +21,8 @@ class Overview extends React.Component {
       selectedStylePhotos: '',
       productInformation: '',
       price: 0,
-      ratingsAverage: ''
+      ratingsAverage: '',
+      currentUrl: window.location.href
     }
     this.handleChangeStyle = this.handleChangeStyle.bind(this);
     this.getRatingsAverage = this.getRatingsAverage.bind(this);
@@ -90,7 +91,7 @@ class Overview extends React.Component {
           <ProductInformation info={this.state.productInformation} price={this.state.price}/>
           {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
           {this.state.selectedStyle && <AddToCart skus={this.state.selectedStyle.skus}/>}
-          <Share />
+          <Share currentPhoto={this.state.currentPhoto} currentUrl={this.state.currentUrl}/>
         </div>
         {this.state.productInformation && <ProductDescription info={this.state.productInformation}/>}
       </div>
