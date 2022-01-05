@@ -40,7 +40,7 @@ OVERVIEW
 .OverviewContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 /* Product Information */
@@ -65,10 +65,10 @@ OVERVIEW
 /* Image Gallery */
 .ImageGalleryContainer {
   display: flex;
-  /* flex: 0 0 45%; */
   justify-content: center;
   flex-direction: column;
-
+  margin-right: 2%;
+  width: 50%;
 }
 
 .ImageContainer {
@@ -76,18 +76,18 @@ OVERVIEW
   justify-content: center;
 }
 
+.ImageContainer button {
+  align-self: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 25px;
+}
+
 .SelectedImageContainer {
   display: flex;
   justify-content: center;
   width: 505px;
   height: 542px;
-}
-
-.ImageGalleryContainer button {
-  margin-top: 45%;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 25px;
 }
 
 .SelectedImage {
@@ -99,13 +99,23 @@ OVERVIEW
 .ThumbnailContainer {
   display: flex;
   justify-content: center;
+}
+
+.ThumbnailCarouselContainer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-self: center;
   height: 80px;
+  width: 420px;
+  overflow: hidden;
 }
 
 .ThumbnailImage {
-  border: solid 3px transparent;
-  max-width: 48px;
-  max-height: 100%;
+  border: solid 4px transparent;
+  flex-shrink: 0;
+  width: 52px;
+  height: 72px;
 }
 
 /* Style Selector */

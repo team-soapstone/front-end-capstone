@@ -7,6 +7,8 @@ class ImageGallery extends React.Component {
       selectedImage: this.props.currentPhoto,
       selectedImageIndex: 0
     }
+    this.handleCarouselNext = this.handleCarouselNext.bind(this);
+    this.handleCarouselPrevious = this.handleCarouselPrevious.bind(this);
   }
   
   componentDidUpdate(prevProps) {
@@ -35,6 +37,16 @@ class ImageGallery extends React.Component {
     this.setState({selectedImage: image, selectedImageIndex: i})
   }
 
+  handleCarouselNext() {
+    const carousel = document.querySelector('.ThumbnailCarouselContainer');
+    carousel.style.transform = `translateX(-50px)`;
+  }
+
+  handleCarouselPrevious() {
+    const carousel = document.querySelector('.ThumbnailCarouselContainer');
+    carousel.style.transform = `translateX(50px)`;
+  }
+
   render() {
     return(
       <div className="ImageGalleryContainer">
@@ -46,6 +58,8 @@ class ImageGallery extends React.Component {
           <button onClick={this.handleNextImage.bind(this)}>&gt;</button>
         </div>
         <div className="ThumbnailContainer">
+          <button onClick={this.handleCarouselPrevious}>prev</button>
+          <div className="ThumbnailCarouselContainer">
           {this.props.selectedStylePhotos.map((photo, i) => (
             <img
               style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
@@ -55,6 +69,8 @@ class ImageGallery extends React.Component {
               onClick={() => this.handleSelectImage(photo.url, i)}
             />
           ))}
+          </div>
+          <button onClick={this.handleCarouselNext}>next</button>
         </div>
       </div>
     );
