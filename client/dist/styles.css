@@ -490,6 +490,27 @@ Questions & Answers
   cursor: pointer;
 }
 
+.questionButtons {
+  display: flex;
+  width: 70.5%;
+  justify-content: center;
+}
+
+#questionButton {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+}
+
+#questionButton:hover {
+  cursor: pointer;
+  background-color: #ececec;
+}
+
 #addQuestionSubmit {
   margin-bottom: 15px;
 }
@@ -504,6 +525,6 @@ Questions & Answers
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* #questionHeader {
-  text-align: center;
-} */
+
+
+
