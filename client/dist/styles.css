@@ -178,6 +178,47 @@ OVERVIEW
   margin: 5px;
 }
 
+/* Share */
+.ShareComponent {
+  display: flex;
+  justify-content:space-around;
+  margin: 5px;
+}
+
+.ShareComponent i {
+  transition: 500ms;
+}
+
+.ShareComponent i:hover {
+  transform: scale(1.2);
+}
+
+.ShareComponent i:active {
+  transform: scale(0.9);
+}
+
+.ShareComponent .fa-facebook {
+  color: #3b5998;
+}
+
+.ShareComponent .fa-instagram {
+  color: transparent;
+  background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -o-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.ShareComponent .fa-pinterest {
+  color: #e60023;
+}
+
+.ShareComponent .fa-creative-commons-share {
+  color: #00112c;
+}
+
 /*
 ======================================
 RATINGS & REVIEWS
