@@ -38,7 +38,6 @@ class NewReview extends React.Component {
         131841: this.state.quality,
       }
     }
-    console.log('data to pass into AXIOS POST ', data)
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews',
       data,
       { headers: { Authorization: API_KEY} }
@@ -157,7 +156,7 @@ class NewReview extends React.Component {
           <label htmlFor='qualityFive'>Perfect</label>
         </div>
         <br/>
-        <button type='submit'>Submit Review</button>
+        <button className='reviewButtons' type='submit'>Submit Review</button>
       </form>
     );
   }

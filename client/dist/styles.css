@@ -330,8 +330,9 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
-.reviewContainer {
+.reviewListContainer {
   width: 825px;
+  height: 500px;
 }
 
 .reviewList {
@@ -348,15 +349,25 @@ RATINGS & REVIEWS
   justify-content: space-between;
 }
 
+.reviewContainer {
+  border-bottom: solid;
+  border-width: thin;
+}
+
+.reviewPhotosThumbnail {
+  width: 50px;
+  height: 50px;
+}
+
 #reviewModal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  height: 750px;
-  width: 750px;
+  height: 800px;
+  width: 500px;
   top: 50%;
   left: 50%;
-  margin-top: -375px;
-  margin-left: -375px;
+  margin-top: -400px;
+  margin-left: -250px;
   overflow: auto; /* Enable scroll if needed */
   display: flex;
   flex-direction: column;
@@ -374,6 +385,21 @@ RATINGS & REVIEWS
 
 #ratingStar {
   display: flex;
+}
+
+.reviewButtonsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.reviewButtons {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  margin: 10px;
+  width: 200px;
+  height: 50px;
 }
 
 /*
