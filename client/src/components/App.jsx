@@ -80,6 +80,7 @@ class App extends React.Component {
         <NavBar search={this.handleSearch.bind(this)}/>
         <Overview currentProduct={this.state.currentProduct} ratings={this.state.productRatings.ratings}/>
         <QuestionView productId={this.state.currentProduct.id} productName={this.state.currentProduct.name}/>
+        <a id="RatingsAndReviews"></a>
         <RatingsAndReviews
           currentProduct={this.state.currentProduct}
           productRatings={this.state.productRatings}

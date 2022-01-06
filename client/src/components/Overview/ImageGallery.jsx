@@ -69,22 +69,24 @@ class ImageGallery extends React.Component {
     return(
       <div className="ImageGalleryContainer">
         <div className="ImageContainer">
-          <button onClick={this.handlePreviousImage}>&lt;</button>
+          <i className="fas fa-angle-left fa-3x" onClick={this.handlePreviousImage} />
           <div className="SelectedImageContainer">
             <img className="SelectedImage" src={this.state.selectedImage} onClick={this.handleExpandImage}/>
             <div className="ImageModal" style={{ display: this.state.showModal ? 'flex' : 'none' }}>
-              <img className="SelectedImageModal" src={this.state.selectedImage}/>
-              <div><i className="far fa-times-circle fa-2x" onClick={this.handleCloseExpandedImage} /></div>
+              <img className="SelectedImageModal" src={this.state.selectedImage} onClick={this.handleCloseExpandedImage}/>
             </div>
           </div>
-          <button onClick={this.handleNextImage}>&gt;</button>
+          <i className="fas fa-angle-right fa-3x" onClick={this.handleNextImage} />
         </div>
         <div className="ThumbnailContainer">
           <div className="ThumbnailCarouselContainer">
             <div className="ThumbnailCarouselTrack">
             {this.props.selectedStylePhotos.map((photo, i) => (
               <img
-                style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
+                style={{ 
+                  border: this.state.selectedImage === photo.url ? "2px solid rgb(231,118,0)" : "",
+                  boxShadow: this.state.selectedImage === photo.url ? "0px 0px 5px 3px rgb(231,118,0)" : ""
+                }}
                 key={i}
                 className="ThumbnailImage"
                 src={photo.thumbnail_url}
