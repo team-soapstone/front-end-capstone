@@ -3,14 +3,27 @@ import React from "react";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.state = {
+      
+    };
   }
 
+  componentDidMount() {
+
+  }
+
+
+
+
+
+
+  
   render() {
     return (
       <div>
         <h1>
-          Catwalk - Soapstone
+          Hello
         </h1>
       </div>
     );
