@@ -11,7 +11,7 @@
 
 ## General Info
 
-Soapstone Group is a group of like-minded individuals that came together deliver based off of client needs. For this particular product, we are creating a modernized client-facing retail web-portal, called Project Catwalk. This retail portal will provide the following function upon it's initial release and deployment:
+Soapstone Group is a group of like-minded individuals that came together to deliver based off of client needs. For this particular product, we are creating a modern client-facing retail web-portal, called Project Catwalk. This retail portal will provide the following function upon its initial release and deployment:
 
 **Overview**
 * An image gallery
@@ -42,8 +42,9 @@ Soapstone Group is a group of like-minded individuals that came together deliver
 
 ### Changing Product with Search Bar
 ![Search Bar](./demo/changeProductDemo.gif)
+
 ## Technologies Used
-Please note that the below are a list of all major dependencies used in the project. There could be various adapters and minor dependencies needed. Please ensure to install the necesary modules with NPM.
+Please note that below is a list of all major dependencies used in the project. There could be various adapters and minor dependencies needed. Please ensure to install the necesary modules with NPM.
 
 * React: Version 15.6.0
 * React-DOM: Version 15.6.0
