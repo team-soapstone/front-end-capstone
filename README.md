@@ -31,7 +31,17 @@ Soapstone Group is a group of like-minded individuals that came together deliver
 * Ability to provide a review
 ## Demo
 
+### Overview
+![Overview](./demo/overviewDemo.gif)
 
+### Questions & Answers
+![Questions and Answers](./demo/questionsDemo.gif)
+
+### Ratings & Reviews
+![Ratings and Reviews](./demo/ratingsDemo.gif)
+
+### Changing Product with Search Bar
+![Search Bar](./demo/changeProductDemo.gif)
 ## Technologies Used
 Please note that the below are a list of all major dependencies used in the project. There could be various adapters and minor dependencies needed. Please ensure to install the necesary modules with NPM.
 
