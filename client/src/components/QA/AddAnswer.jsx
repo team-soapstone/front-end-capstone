@@ -53,11 +53,11 @@ class AddAnswer extends React.Component {
         <textarea name="answer" maxLength="1000" value={this.state.answer} onChange={this.onChangeAnswer}required/>
         <label htmlFor="username">Username: </label>
         <input type="text" value={this.state.username} onChange={this.onChangeUsername} name="username" maxLength="60" placeholder="Example: jack543!" required />
-        <p className="addQuestionInput" style={{ fontSize: "8px", marginTop: '0', color: 'white', position: 'relative', marginLeft: '0',}}>For privacy reasons, do not use your full name or email address within nickname.</p>
+        <p className="addQuestionInput" style={{ fontSize: "8px", marginTop: '0', position: 'relative', marginLeft: '0',}}>For privacy reasons, do not use your full name or email address within nickname.</p>
         <label htmlFor="username">Email: </label>
         <input type="email" value={this.state.email} onChange={this.onChangeEmail} name="email" maxLength="60" placeholder="Example: jack@email.com" required />
         <input type="file" accept="image/png, image/jpeg"/>
-        <input type="submit" />
+        <input type="submit" className="addButton"/>
       </form>
     );
   }
