@@ -6,8 +6,6 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import ReviewList from './ReviewList.jsx';
 
-// create a handleFilter function that will change state (by filter for specific star)
-  // make sure not to remake GET request
 class RatingsAndReviews extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +128,7 @@ class RatingsAndReviews extends React.Component {
     const { productRatings, currentProduct } = this.props;
     return (
       <div className='widgetContainer'>
-        <h3 className='widgetHeader'>RATINGS & REVIEWS</h3>
+        <h2 className='widgetHeader'>Ratings & Reviews</h2>
         <div className='breakdownReviewContainer'>
         {productRatings &&
           <div className='breakdownContainer'>

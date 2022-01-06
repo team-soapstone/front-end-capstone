@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Review from './Review.jsx';
 import NewReview from './NewReview.jsx';
+import API_KEY from '../../../../config.js';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ReviewList extends React.Component {
     this.handleSeeMoreReviews = this.handleSeeMoreReviews.bind(this);
     this.handleOpenReviewModal = this.handleOpenReviewModal.bind(this);
     this.handleCloseReviewModal = this.handleCloseReviewModal.bind(this);
+    this.handleMarkHelpful = this.handleMarkHelpful.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,6 +54,20 @@ class ReviewList extends React.Component {
     })
   }
 
+  handleMarkHelpful(reviewId) {
+    console.log(reviewId)
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/${reviewId}/helpful`,
+      { review_id: reviewId },
+      { headers: { Authorization: API_KEY} }
+    )
+    .then((response) => {
+      this.props.handleGetReviews();
+    })
+    .catch((error) => {
+      throw error;
+    })
+  }
+
   render() {
     const { reviews, currentProduct, productRatings, handleGetReviews } = this.props;
     // conditional for amount of reviews to render
@@ -62,6 +78,7 @@ class ReviewList extends React.Component {
           return <Review
             key={review.review_id}
             review={review}
+            handleMarkHelpful={this.handleMarkHelpful}
           />
         }
       })
