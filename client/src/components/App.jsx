@@ -49,10 +49,35 @@ class App extends React.Component {
       })
   }
 
+  handleSearch(query) {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products`, { headers: {Authorization: API_KEY}, params: {page: 1, count: 100}})
+    .then((response) => {
+      response.data.some((item, index) => {
+        let found = false;
+        let lowerCaseQuery = query.toLowerCase();
+        if ( item.name.toLowerCase().includes(lowerCaseQuery) ) {
+            this.setState({currentProduct: response.data[index]});
+            found = true;
+          }
+          if (found) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      })
+      .then(() => {
+        this.handleGetRatings(this.state.currentProduct.id);
+      })
+      .catch((error) => {
+        throw error;
+      })
+  }
+
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar search={this.handleSearch.bind(this)}/>
         <Overview currentProduct={this.state.currentProduct} ratings={this.state.productRatings.ratings}/>
         <QuestionView productId={this.state.currentProduct.id} productName={this.state.currentProduct.name}/>
         <RatingsAndReviews
