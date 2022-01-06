@@ -2,12 +2,9 @@ import React from 'react';
 import Ratings from '../Ratings.jsx';
 import moment from 'moment';
 
-// pass in a number to ratings for it to render a star
-
-const Review = ({ review }) => {
-  const { reviewer_name, rating, date, summary, body, photos, recommend, response, helpfulness } = review;
+const Review = ({ review, handleMarkHelpful }) => {
+  const { review_id, reviewer_name, rating, date, summary, body, photos, recommend, response, helpfulness } = review;
   let photoRender;
-
   if (photos.length > 0) {
     photoRender = <div>
       {photos.map((photo, idx) => {
@@ -30,7 +27,10 @@ const Review = ({ review }) => {
       {photoRender}
       <p className='reviewRecommend'>{recommend}</p>
       <p className='reviewResponse'>{response}</p>
-      <p>Helpful? Yes ({helpfulness})</p>
+      <p>Helpful? <span
+        className='reviewUnderline clickable'
+        onClick={e => handleMarkHelpful(review_id)}
+      >Yes</span>({helpfulness})</p>
     </div>
   );
 };
