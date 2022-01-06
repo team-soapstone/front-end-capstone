@@ -20,7 +20,8 @@ class QuestionView extends React.Component {
       addQuestionVisisble: 'hidden',
       moreQuestionsVisible: 'visible',
       answerReported: [],
-      addAnswerTo: 0
+      addAnswerTo: 0,
+      expandAnswers: []
     };
 
     this.handleAddQuestion = this.handleAddQuestion.bind(this);
@@ -99,9 +100,9 @@ class QuestionView extends React.Component {
   loadMoreQuestions() {
     this.setState({
       shownQuestions: this.state.shownQuestions + 2
+    }, () => {
+      this.getCurrentQuestions(this.props.productId);
     });
-
-    this.getCurrentQuestions(this.props.productId);
   }
 
   showAddQuestion() {
@@ -162,15 +163,19 @@ class QuestionView extends React.Component {
     .catch((err) => { throw err; });
   }
 
-  showMoreAnswers(len) {
+  showMoreAnswers(event) {
+    let container = [...this.state.expandAnswers, Number(event.target.id)]
     this.setState({
-      shownAnswers: len
+      expandAnswers: container
     });
   }
 
-  showLessAnswers() {
+  showLessAnswers(event) {
+    let idx = this.state.expandAnswers.indexOf(Number(event.target.id));
+
+    let container = this.state.expandAnswers.splice(idx, 1)
     this.setState({
-      shownAnswers: 2
+      expandedAnswers: container
     });
   }
 
@@ -185,7 +190,7 @@ class QuestionView extends React.Component {
         <div data-testid='question-view' className="qaComponent">
           <h2>Questions & Answers</h2>
           <QuestionSearch onSearch={this.searchQuestionList}/>
-          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion} markQuestionHelpful={this.markQuestionHelpful} markAnswerHelpful={this.markAnswerHelpful} visible={this.state.moreQuestionsVisible} reportAnswer={this.reportAnswer} answerReported={this.state.answerReported} productName={this.props.productName} addAnswerTo={this.state.addAnswerTo} showAddAnswer={this.showAddAnswer} closeAddAnswer={this.closeAddAnswer} handleSubmitAnswer={this.handleSubmitAnswer} showMoreAnswers={this.showMoreAnswers} showLessAnswers={this.showLessAnswers}/>
+          <QuestionList questions={this.state.searchedQuestions} answerLimit={this.state.shownAnswers} onClick={this.loadMoreQuestions} showQuestion={this.showAddQuestion} markQuestionHelpful={this.markQuestionHelpful} markAnswerHelpful={this.markAnswerHelpful} visible={this.state.moreQuestionsVisible} reportAnswer={this.reportAnswer} answerReported={this.state.answerReported} productName={this.props.productName} addAnswerTo={this.state.addAnswerTo} showAddAnswer={this.showAddAnswer} closeAddAnswer={this.closeAddAnswer} handleSubmitAnswer={this.handleSubmitAnswer} showMoreAnswers={this.showMoreAnswers} showLessAnswers={this.showLessAnswers} expandAnswers={this.state.expandAnswers}/>
           <AddQuestion addQuestion={this.handleAddQuestion} visible={this.state.addQuestionVisisble} onClick={this.closeAddQuestion}/>
         </div>
       </div>
