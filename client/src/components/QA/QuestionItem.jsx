@@ -32,7 +32,6 @@ const QuestionItem = ({
   let answerContainer = expandAnswers.includes(Number(questionId)) ? sortedContainer : sortedContainer.slice(0, answerLimit);
 
 
-
   return (
     <div className="questionItem">
       <div id="questionHeader">
@@ -56,13 +55,21 @@ const QuestionItem = ({
       <div>
         {answerContainer.map((answer) => {
           return (
-            <p
+            <div
               style={{ fontSize: "13px" }}
               key={answer[1].id}
               className="answer"
             >
+              <br/>
               A: {answer[1].body}
               <br />
+              <div className="pictureContainer">
+              {
+                answer[1].photos.map((url) => {
+                  return ( <img className="answerImg" key={url} src={url} alt="user-submitted answer image"/>)
+                })
+              }
+              </div>
               by {answer[1].answerer_name},{" "}
               {moment(answer[1].date).format("MMM Do YYYY")}
               &nbsp; | &nbsp; Helpful? &nbsp;{" "}
@@ -83,7 +90,7 @@ const QuestionItem = ({
               >
                 {answerReported.includes(answer[1].id) ? "Reported" : "Report"}
               </span>
-            </p>
+            </div>
           );
         })}
       </div>

@@ -8,6 +8,9 @@ class ImageGallery extends React.Component {
       selectedImageIndex: 0,
       showModal: false
     }
+
+    this.handleCarouselNext = this.handleCarouselNext.bind(this);
+    this.handleCarouselPrevious = this.handleCarouselPrevious.bind(this);
     this.handleNextImage = this.handleNextImage.bind(this);
     this.handlePreviousImage = this.handlePreviousImage.bind(this);
     this.handleSelectImage = this.handleSelectImage.bind(this);
@@ -41,6 +44,18 @@ class ImageGallery extends React.Component {
     this.setState({selectedImage: image, selectedImageIndex: i})
   }
 
+  handleCarouselNext() {
+    if (this.props.selectedStylePhotos.length > 6) {
+      const track = document.querySelector('.ThumbnailCarouselTrack');
+      const carouselWidth = document.querySelector('.ThumbnailContainer').offsetWidth;
+      track.style.transform = `translateX(-${carouselWidth}px)`;
+    }
+  }
+
+  handleCarouselPrevious() {
+    const track = document.querySelector('.ThumbnailCarouselTrack');
+    track.style.transform = `translateX(0)`;
+
   handleExpandImage() {
     this.setState({ showModal: true});
   }
@@ -64,15 +79,23 @@ class ImageGallery extends React.Component {
           <button onClick={this.handleNextImage}>&gt;</button>
         </div>
         <div className="ThumbnailContainer">
-          {this.props.selectedStylePhotos.map((photo, i) => (
-            <img
-              style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
-              key={i}
-              className="ThumbnailImage"
-              src={photo.thumbnail_url}
-              onClick={() => this.handleSelectImage(photo.url, i)}
-            />
-          ))}
+          <div className="ThumbnailCarouselContainer">
+            <div className="ThumbnailCarouselTrack">
+            {this.props.selectedStylePhotos.map((photo, i) => (
+              <img
+                style={{ border: this.state.selectedImage === photo.url ? "4px solid red" : ""}}
+                key={i}
+                className="ThumbnailImage"
+                src={photo.thumbnail_url}
+                onClick={() => this.handleSelectImage(photo.url, i)}
+              />
+            ))}
+            </div>
+          </div>
+          <div className="CarouselNav">
+            <i className="fas fa-angle-left fa-2x" onClick={this.handleCarouselPrevious} />
+            <i className="fas fa-angle-right fa-2x" onClick={this.handleCarouselNext} />
+          </div>
         </div>
       </div>
     );

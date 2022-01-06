@@ -124,29 +124,29 @@ OVERVIEW
 /* Image Gallery */
 .ImageGalleryContainer {
   display: flex;
-  /* flex: 0 0 45%; */
   justify-content: center;
   flex-direction: column;
-
+  margin-right: 2%;
+  width: 50%;
 }
 
 .ImageContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+.ImageContainer button {
+  align-self: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 25px;
 }
 
 .SelectedImageContainer {
   display: flex;
   justify-content: center;
-  width: 505px;
+  width: 600px;
   height: 542px;
-}
-
-.ImageGalleryContainer button {
-  margin-top: 45%;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 25px;
 }
 
 .SelectedImage {
@@ -185,15 +185,51 @@ OVERVIEW
 }
 
 .ThumbnailContainer {
+  width: 600px;
+  height: 90px;
+  position: relative;
+  align-self: center;
+}
+
+.ThumbnailCarouselContainer {
+  overflow: hidden;
+}
+
+.ThumbnailCarouselTrack {
   display: flex;
-  justify-content: center;
-  height: 80px;
+  transition: transform 0.5s;
 }
 
 .ThumbnailImage {
-  border: solid 3px transparent;
-  max-width: 48px;
-  max-height: 100%;
+  border: solid 4px transparent;
+  flex-shrink: 0;
+  width: 100px;
+  height: 80px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.CarouselNav i {
+  position: absolute;
+  top: 27%;
+}
+
+.CarouselNav i:hover {
+  transform: scale(1.2);
+  transition: transform 0.25s;
+}
+
+.CarouselNav i:active {
+  transform: scale(0.9);
+  transition: transform 0.25s;
+}
+
+.CarouselNav .fa-angle-left {
+  left: -18px;
+}
+
+.CarouselNav .fa-angle-right {
+  right: -18px;
 }
 
 /* Style Selector */
@@ -484,6 +520,7 @@ Questions & Answers
   border: 1px dotted black;
   margin-top: 5px;
   width: 70.5%;
+  overflow: visible;
 }
 
 .questionText {
@@ -553,6 +590,17 @@ Questions & Answers
   display: flex;
   width: 70.5%;
   justify-content: center;
+}
+
+.answerImg {
+  height: 7%;
+  width: 7%;
+  padding: 2px;
+}
+
+.pictureContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 #questionButton {
