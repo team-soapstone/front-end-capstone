@@ -55,6 +55,7 @@ class ImageGallery extends React.Component {
   handleCarouselPrevious() {
     const track = document.querySelector('.ThumbnailCarouselTrack');
     track.style.transform = `translateX(0)`;
+  }
 
   handleExpandImage() {
     this.setState({ showModal: true});
