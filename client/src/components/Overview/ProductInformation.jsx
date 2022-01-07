@@ -12,9 +12,9 @@ const ProductInformation = ({info, price, salePrice}) => {
       <div className="ProductPrice">
         {isOnSale ? (
           <div>
-            <span className="OldPrice">${price}</span>
-            <i className="fas fa-tags"> On Sale!</i>
             <span className="SalePrice">${salePrice}</span>
+            <i className="fas fa-tags"> On Sale!</i>
+            <span className="OldPrice">${price}</span>
           </div>
           ) : (
           <span className="BasePrice">${price}</span>

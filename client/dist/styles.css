@@ -157,13 +157,13 @@ OVERVIEW
 .OldPrice {
   color: rgb(75, 75, 75);
   text-decoration: line-through;
-  padding-right: 10px;
+  padding-left: 10px;
   font-size: 110%;
 }
 
 .SalePrice {
-  color: rgb(75, 75, 75);
-  padding-left: 10px;
+  color: rgb(198,38,0);
+  padding-right: 10px;
   font-size: 150%;
 }
 
