@@ -3,6 +3,7 @@ body {
   min-width: 1300px;
   overflow: scroll;
   overflow-x: hidden;
+  font-family:sans-serif;
 }
 
 .visually-hidden {
@@ -27,7 +28,7 @@ Navigation Bar
   background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
   background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
   width: 100%;
-  height: 5em;
+  height: 7em;
 }
 
 .NavBar .LogoContainer {
@@ -84,9 +85,10 @@ STAR RENDERING
 
 .star, .partialStar {
   font-size: 25px;
+  font-weight: 600;
   display: inline-block;
   position: relative;
-  color: black;
+  color: rgb(252, 185, 0);
 }
 
 .partialStar:after {
@@ -96,7 +98,7 @@ STAR RENDERING
   top: 0;
   width: var(--width);
   overflow: hidden;
-  color: black;
+  color: rgb(252, 185, 0);
 }
 
 /*
@@ -107,14 +109,24 @@ OVERVIEW
 .OverviewContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   padding-top: 10%;
+}
+
+.OverviewRatings {
+  display: flex;
+  align-items: center;
+}
+
+.ReadReviews {
+  font-size: 90%;
+  padding-left: 10px;
+  padding-top: 2px;
 }
 
 /* Product Information */
 .InformationContainer {
   display: flex;
-  /* flex: 0 0 45%; */
   flex-direction: column;
   justify-content: space-between;
 }
@@ -122,6 +134,7 @@ OVERVIEW
 .ProductCategory {
   text-transform: uppercase;
   margin-bottom: 1em;
+  font-size: 130%;
 }
 
 .ProductName {
@@ -130,25 +143,52 @@ OVERVIEW
   margin-bottom: 1em;
 }
 
+.BasePrice {
+  font-size: 150%;
+}
+
+.OldPrice {
+  text-decoration: line-through;
+  padding-right: 10px;
+  font-size: 110%;
+}
+
+.SalePrice {
+  padding-left: 10px;
+  font-size: 150%;
+}
+
+.ProductPrice .fa-tags {
+  color: rgb(196, 0, 0);
+}
+
 /* Image Gallery */
 .ImageGalleryContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-right: 2%;
-  width: 50%;
+  margin-right: 5%;
 }
 
 .ImageContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.ImageContainer button {
+.ImageContainer i {
   align-self: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  height: 25px;
+  color: rgb(83, 83, 83);
+}
+
+.ImageContainer i:hover {
+  transform: scale(1.2);
+  transition: transform 0.25s;
+}
+
+.ImageContainer i:active {
+  transform: scale(0.9);
+  transition: transform 0.25s;
 }
 
 .SelectedImageContainer {
@@ -156,41 +196,45 @@ OVERVIEW
   justify-content: center;
   width: 600px;
   height: 542px;
+  margin: 0 10px;
 }
 
 .SelectedImage {
-  border: solid 4px transparent;
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.6);
+}
+
+.SelectedImage:hover {
+  cursor: zoom-in;
 }
 
 .ImageModal {
-  /* flex-direction: column; */
   justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
-  height: 80%;
-  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  left: 10%;
   border-radius: 1em;
-  padding: 0px;
+  width: 90%;
+  height: 90%;
 }
 .SelectedImageModal {
   max-width:90%;
-  max-height:95%;
+  max-height:90%;
   width: auto;
   height: auto;
   margin: 0;
 }
 
-.fa-times-circle {
-  display: inline-block;
-  right: -1px;
-  position: absolute;
-  color: white;
+.SelectedImageModal:hover {
+  cursor: zoom-out;
 }
 
 .ThumbnailContainer {
@@ -210,17 +254,28 @@ OVERVIEW
 }
 
 .ThumbnailImage {
-  border: solid 4px transparent;
+  border: solid 2px transparent;
   flex-shrink: 0;
-  width: 100px;
+  width: 80px;
   height: 80px;
   border-radius: 12px;
+  margin: 10px;
   box-sizing: border-box;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.6);
+}
+
+.ThumbnailImage:hover {
+  transform: scale(1.05);
+}
+
+.ThumbnailImage:active {
+  transform: scale(0.99);
 }
 
 .CarouselNav i {
   position: absolute;
-  top: 27%;
+  top: 35%;
+  color: rgb(83, 83, 83);
 }
 
 .CarouselNav i:hover {
@@ -246,17 +301,25 @@ OVERVIEW
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
+  width: 320px;
+  margin-top: 10px;
+}
+
+.StyleName {
+  font-size: 110%;
 }
 
 .StyleImage {
-  flex: 1 0 21%;
   border-radius: 80px;
-  border: solid 3px transparent;
-  margin-top: 10px;
-  margin-right: 5px;
+  border: solid 4px transparent;
   height: 80px;
-  width: 50px;
-  max-width: 21%;
+  width: 80px;
+  box-sizing: border-box;
+}
+
+.StyleImage:hover {
+  background: 
+    radial-gradient( rgb(255, 94, 0) 60%, rgb(255, 255, 255) 70%) border-box;
 }
 
 /* Product Description */
@@ -264,17 +327,19 @@ OVERVIEW
   display: flex;
   flex: 0 0 90%;
   justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: 5% 0;
 }
 
 .ProductDescription {
   display: flex;
   flex-direction: column;
+  padding-right: 25px;
+  border-right: 3px solid rgb(138, 138, 138);
+  font-size: 110%;
 }
 .ProductSlogan {
   font-weight: 600;
-  font-size: 120%;
+  font-size: 180%;
   margin-bottom: 10px;
 }
 
@@ -282,31 +347,69 @@ OVERVIEW
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-left: 50px;
+  margin-left: 25px;
+  font-weight: 600;
+  font-size: 95%;
 }
 
 /* Add to Cart */
+.AddtoCartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .SelectSize {
   font-weight: 600;
   font-size: 110%;
   padding: 12px 50px;
   margin: 5px;
+  text-align: center;
 }
 
 .SelectQuantity {
   font-weight: 600;
   font-size: 110%;
+  width: 110px;
   padding: 12px 30px;
   margin: 5px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.SelectQuantity option {
+  text-align: center;
 }
 
 .AddToCartButton {
-  padding: 10px 20px;
-  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(255, 153, 37);
+  color: white;
+  font-size: 130%;
+  padding: 10px 0;
+  margin: 10px 40px;
+  border: 2px solid rgb(221, 132, 31);
+  border-radius: 25px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.6);
+}
+
+.AddToCartButton:active {
+  transform: scale(0.95);
+}
+
+.AddToCartButton span {
+  cursor: default;
+  padding-left: 20px;
+}
+
+.AddToCartButton i {
+  padding-top: 3px;
 }
 
 .LikeButton {
-  font-size: 150%;
+  font-size: 110%;
   padding: 0 20px 2px;
   margin: 5px;
 }
@@ -365,14 +468,6 @@ RATINGS & REVIEWS
   margin: 10px 75px 75px 75px;
 }
 
-.widgetHeader {
-  height: 100%;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-family: sans-serif, Arial, Helvetica;
-  font-weight: normal;
-}
-
 #ratingDisplay {
   display: flex;
   flex-direction: row;
@@ -408,6 +503,10 @@ RATINGS & REVIEWS
   background-color: transparent;
   border: 0;
   text-decoration: underline;
+}
+
+.ratingFilterButton:hover {
+  cursor: pointer;
 }
 
 .ratingBar {
@@ -463,6 +562,10 @@ RATINGS & REVIEWS
   height: 50px;
 }
 
+.reviewUnderline {
+  text-decoration: underline;
+}
+
 #reviewModal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -487,8 +590,16 @@ RATINGS & REVIEWS
   justify-content: end;
 }
 
+#closeReviewForm:hover {
+  cursor: pointer;
+}
+
 #ratingStar {
   display: flex;
+}
+
+.starRate:hover {
+  cursor: pointer;
 }
 
 .reviewButtonsContainer {
@@ -504,6 +615,11 @@ RATINGS & REVIEWS
   margin: 10px;
   width: 200px;
   height: 50px;
+}
+
+.reviewButtons:hover {
+  cursor: pointer;
+  background-color: #ececec;
 }
 
 /*
@@ -584,7 +700,7 @@ Questions & Answers
   position: absolute;
   right: 3px;
   top: 0;
-  color: white;
+  color: black;
 }
 
 .closeForm:hover {
@@ -610,6 +726,21 @@ Questions & Answers
 .pictureContainer {
   display: flex;
   flex-direction: row;
+}
+
+.addButton {
+  text-transform: uppercase;
+  font-size: large;
+  background-color: white;
+  border-radius: 8px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addButton:hover {
+  cursor: pointer;
+  background-color: #ececec;
 }
 
 #questionButton {
@@ -638,7 +769,8 @@ Questions & Answers
   top: 40%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: #eeebe5; /* Black w/ opacity */
+  border-radius: 5%;
 }
 
 

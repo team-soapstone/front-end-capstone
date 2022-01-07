@@ -85,9 +85,9 @@ class NewReview extends React.Component {
         >
           {[...Array(5)].map((star, idx) => {
             if (idx < this.state.rating) {
-              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
+              return <div className='starRate' key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2605;</div>
             } else {
-              return <div key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
+              return <div className='starRate' key={idx} value={idx + 1} onClick={e => this.handleStarRender(idx + 1)}>&#x2606;</div>
             }
           })}
         </div>

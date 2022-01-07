@@ -2,9 +2,6 @@ import React from 'react';
 import Ratings from '../Ratings.jsx';
 import ratingAverage from '../util/ratingAverage.js';
 
-// may need to change this into a stateful component to keep track of toggleStatus
-// implement onClick eventhandler to change the text within button to bold
-
 const RatingBreakdown = ({ productRatings, handleFilter, filter }) => {
   const averageRating = Number(ratingAverage(productRatings.ratings));
   const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
