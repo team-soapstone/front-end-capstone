@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const config = {
   entry: [
@@ -41,6 +42,12 @@ const config = {
       directory: './client/dist'
     }
   },
+  plugins: [
+    new MomentLocalesPlugin(),
+    new MomentLocalesPlugin({
+      localesToKeep: ['es-us', 'ru']
+    })
+  ]
 };
 
 module.exports = config;
