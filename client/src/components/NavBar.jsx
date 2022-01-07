@@ -33,11 +33,13 @@ class NavBar extends React.Component {
     return (
       <div className="NavBar">
         <div className="LogoContainer">
-          <img className="Logo" src={logo}/>
+          <img className="Logo" alt="Soapstone Logo" src={logo}/>
         </div>
         <div className="SearchBar">
+          <label className="visually-hidden" htmlFor="NavSearchInput">Search</label>
           <input 
-            className="SearchInput"  
+            className="SearchInput"
+            id="NavSearchInput"  
             value={this.state.searchInput}
             onChange={this.handleSearchInput}
             onKeyPress={this.handleKeyPress}
