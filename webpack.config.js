@@ -45,7 +45,7 @@ const config = {
   plugins: [
     new MomentLocalesPlugin(),
     new MomentLocalesPlugin({
-      localesToKeep: ['es-us', 'ru']
+      localesToKeep: ['en']
     })
   ]
 };
