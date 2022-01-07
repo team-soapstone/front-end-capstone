@@ -24,9 +24,6 @@ Navigation Bar
 
 .NavBar {
   display: flex;
-  background: #2980B9;
-  background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
-  background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
   width: 100%;
   height: 7em;
 }
@@ -47,6 +44,7 @@ Navigation Bar
 }
 
 .NavBar input {
+  color: rgb(75, 75, 75);
   border: 0;
   box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px black;
   height: 45%;
@@ -131,30 +129,41 @@ OVERVIEW
   justify-content: space-between;
 }
 
+.InformationContainer a:link {
+  color:rgb(66, 66, 66)
+}
+
+
+
 .ProductCategory {
+  color: rgb(75, 75, 75);
   text-transform: uppercase;
   margin-bottom: 1em;
   font-size: 130%;
 }
 
 .ProductName {
+  color: rgb(75, 75, 75);
   font-weight: 600;
   font-size: 200%;
   margin-bottom: 1em;
 }
 
 .BasePrice {
+  color: rgb(198,38,0);
   font-size: 150%;
 }
 
 .OldPrice {
+  color: rgb(75, 75, 75);
   text-decoration: line-through;
-  padding-right: 10px;
+  padding-left: 10px;
   font-size: 110%;
 }
 
 .SalePrice {
-  padding-left: 10px;
+  color: rgb(198,38,0);
+  padding-right: 10px;
   font-size: 150%;
 }
 
@@ -324,6 +333,7 @@ OVERVIEW
 
 /* Product Description */
 .ProductDescriptionContainer {
+  color: rgb(51, 51, 51);
   display: flex;
   flex: 0 0 90%;
   justify-content: center;
@@ -334,7 +344,7 @@ OVERVIEW
   display: flex;
   flex-direction: column;
   padding-right: 25px;
-  border-right: 3px solid rgb(138, 138, 138);
+  border-right: 3px solid rgb(160, 0, 0);
   font-size: 110%;
 }
 .ProductSlogan {
@@ -358,22 +368,48 @@ OVERVIEW
   flex-direction: column;
   justify-content: center;
 }
+
 .SelectSize {
   font-weight: 600;
   font-size: 110%;
+  color: rgb(65, 65, 65);
   padding: 12px 50px;
   margin: 5px;
+  border: 0;
   text-align: center;
+  border-radius: 25px;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 10px -1px rgba(0, 0, 0, 0.3);
+}
+
+.SelectSize:hover {
+  transform: scale(1.02);
+}
+
+.SelectSize:active {
+  transform: scale(0.99);
 }
 
 .SelectQuantity {
   font-weight: 600;
   font-size: 110%;
+  color: rgb(65, 65, 65);
   width: 110px;
   padding: 12px 30px;
   margin: 5px;
+  border: 0;
   text-align: center;
+  border-radius: 25px;
   box-sizing: border-box;
+  box-shadow: 0px 6px 10px -1px rgba(0, 0, 0, 0.3);
+}
+
+.SelectQuantity:hover {
+  transform: scale(1.02);
+}
+
+.SelectQuantity:active {
+  transform: scale(0.99);
 }
 
 .SelectQuantity option {
@@ -384,15 +420,19 @@ OVERVIEW
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: rgb(255, 153, 37);
+  background-color: rgb(194, 0, 0);
   color: white;
   font-size: 130%;
+  font-weight: 600;
   padding: 10px 0;
-  margin: 10px 40px;
-  border: 2px solid rgb(221, 132, 31);
+  margin: 20px 40px 10px;
   border-radius: 25px;
   box-sizing: border-box;
-  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 6px 10px -1px rgba(0, 0, 0, 0.4);
+}
+
+.AddToCartButton:hover {
+  transform: scale(1.02);
 }
 
 .AddToCartButton:active {

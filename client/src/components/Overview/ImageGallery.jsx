@@ -84,8 +84,8 @@ class ImageGallery extends React.Component {
             {this.props.selectedStylePhotos.map((photo, i) => (
               <img
                 style={{ 
-                  border: this.state.selectedImage === photo.url ? "2px solid rgb(231,118,0)" : "",
-                  boxShadow: this.state.selectedImage === photo.url ? "0px 0px 5px 3px rgb(231,118,0)" : ""
+                  border: this.state.selectedImage === photo.url ? "2px solid rgb(194, 0, 0)" : "",
+                  boxShadow: this.state.selectedImage === photo.url ? "0px 0px 5px 3px rgb(194, 0, 0)" : ""
                 }}
                 key={i}
                 className="ThumbnailImage"
