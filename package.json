@@ -6,6 +6,7 @@
   "scripts": {
     "start": "live-server client/dist",
     "react-dev": "webpack --config ./webpack.config.js --mode=development -w",
+    "build": "webpack --config ./webpack.config.js --mode=production",
     "test": "jest --env=jsdom"
   },
   "jest": {
