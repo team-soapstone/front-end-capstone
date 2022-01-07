@@ -22,6 +22,7 @@ class StyleSelector extends React.Component {
               key={style.style_id} 
               className="StyleImage"
               src={style.photos[0].thumbnail_url}
+              alt={this.props.selectedStyle.name}
               onClick={() => this.props.changeStyle(index)}/>
           ))}
         </div>

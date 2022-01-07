@@ -71,9 +71,9 @@ class ImageGallery extends React.Component {
         <div className="ImageContainer">
           <i className="fas fa-angle-left fa-3x" onClick={this.handlePreviousImage} />
           <div className="SelectedImageContainer">
-            <img className="SelectedImage" src={this.state.selectedImage} onClick={this.handleExpandImage}/>
+            <img className="SelectedImage" src={this.state.selectedImage} alt={this.props.selectedStyle.name} onClick={this.handleExpandImage}/>
             <div className="ImageModal" style={{ display: this.state.showModal ? 'flex' : 'none' }}>
-              <img className="SelectedImageModal" src={this.state.selectedImage} onClick={this.handleCloseExpandedImage}/>
+              <img className="SelectedImageModal" src={this.state.selectedImage} alt={this.props.selectedStyle.name} onClick={this.handleCloseExpandedImage}/>
             </div>
           </div>
           <i className="fas fa-angle-right fa-3x" onClick={this.handleNextImage} />
@@ -90,6 +90,7 @@ class ImageGallery extends React.Component {
                 key={i}
                 className="ThumbnailImage"
                 src={photo.thumbnail_url}
+                alt={this.props.selectedStyle.name}
                 onClick={() => this.handleSelectImage(photo.url, i)}
               />
             ))}
