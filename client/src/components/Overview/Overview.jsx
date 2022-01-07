@@ -46,7 +46,6 @@ class Overview extends React.Component {
   getStyles(id) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${id}/styles`, { headers: {Authorization: API_KEY} })
       .then((response) => {
-        console.log(response.data.results);
         this.setState({
           styles: response.data.results,
           selectedStyle: response.data.results[0],
@@ -63,7 +62,6 @@ class Overview extends React.Component {
   getInformation(id) {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/products/${id}`, { headers: {Authorization: API_KEY} })
       .then((response) => {
-        console.log(response.data.results);
         this.setState({
           productInformation: response.data
         })
@@ -87,8 +85,11 @@ class Overview extends React.Component {
       <div className="OverviewContainer">
         {this.state.styles && <ImageGallery selectedStyle={this.state.selectedStyle} selectedStylePhotos={this.state.selectedStylePhotos} currentPhoto={this.state.currentPhoto}/>}
         <div className="InformationContainer">
+          <div className="OverviewRatings">
           <Ratings rating={this.state.ratingsAverage}/>
-          <ProductInformation info={this.state.productInformation} price={this.state.price}/>
+          <a href="#RatingsAndReviews" className="ReadReviews">Read all reviews</a>
+          </div>
+          <ProductInformation info={this.state.productInformation} price={this.state.price} salePrice={this.state.selectedStyle.sale_price}/>
           {this.state.styles && <StyleSelector styles={this.state.styles} selectedStyle={this.state.selectedStyle} changeStyle={this.handleChangeStyle}/>}
           {this.state.selectedStyle && <AddToCart skus={this.state.selectedStyle.skus}/>}
           <Share currentPhoto={this.state.currentPhoto} currentUrl={this.state.currentUrl}/>
