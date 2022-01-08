@@ -12,7 +12,7 @@ class ReviewList extends React.Component {
       reviewsRendered: 2,
       allReviewsRendered: false,
       amountOfReviews: 0,
-      reviewModalVisbility: false
+      reviewModalVisbility: false,
     };
     this.handleSeeMoreReviews = this.handleSeeMoreReviews.bind(this);
     this.handleOpenReviewModal = this.handleOpenReviewModal.bind(this);
@@ -55,12 +55,17 @@ class ReviewList extends React.Component {
   }
 
   handleMarkHelpful(reviewId) {
-    console.log(reviewId)
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-nyc/reviews/${reviewId}/helpful`,
       { review_id: reviewId },
       { headers: { Authorization: API_KEY} }
     )
     .then((response) => {
+      // save in browser's local storage if the current review was marked helpful
+      let currentMemory = JSON.parse(localStorage.getItem('reviewsMarkedHelpful')) || {}
+      let reviewsMarkedHelpful = {...currentMemory, [reviewId]: true };
+      localStorage.setItem('reviewsMarkedHelpful', JSON.stringify(reviewsMarkedHelpful));
+    })
+    .then(() => {
       this.props.handleGetReviews();
     })
     .catch((error) => {
@@ -71,6 +76,7 @@ class ReviewList extends React.Component {
   render() {
     const { reviews, currentProduct, productRatings, handleGetReviews } = this.props;
     // conditional for amount of reviews to render
+    console.log(reviews);
     let list;
     if (this.state.reviewsExist !== false) {
       list = this.props.reviews.map((review, idx) => {

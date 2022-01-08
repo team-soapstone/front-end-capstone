@@ -25,12 +25,10 @@ const Review = ({ review, handleMarkHelpful }) => {
       <h4 className='reviewHeader'>{summary}</h4>
       <p className='reviewBody'>{body}</p>
       {photoRender}
-      <p className='reviewRecommend'>{recommend}</p>
+      {recommend ? <p className='reviewRecommend'><i className='fas fa-check'></i> I recommend this product</p> : null}
       <p className='reviewResponse'>{response}</p>
-      <p>Helpful? <span
-        className='reviewUnderline clickable'
-        onClick={e => handleMarkHelpful(review_id)}
-      >Yes</span>({helpfulness})</p>
+      <p>Helpful? {JSON.parse(localStorage.getItem('reviewsMarkedHelpful'))[review_id] ?
+        <b className='reviewUnderline'>Yes</b> : <span className='reviewUnderline clickable' onClick={e => handleMarkHelpful(review_id)}>Yes</span>} ({helpfulness})</p>
     </div>
   );
 };
