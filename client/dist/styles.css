@@ -327,7 +327,7 @@ OVERVIEW
 }
 
 .StyleImage:hover {
-  background: 
+  background:
     radial-gradient( rgb(255, 94, 0) 60%, rgb(255, 255, 255) 70%) border-box;
 }
 
@@ -672,7 +672,7 @@ Questions & Answers
   position: relative;
   left: 15%;
   max-height: 85vh;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .qaSearch {
