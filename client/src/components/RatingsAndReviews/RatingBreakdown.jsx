@@ -35,7 +35,7 @@ const RatingBreakdown = ({ productRatings, handleFilter, filter }) => {
   if (denominator === 0) {
     percentRecommended = 0;
   } else {
-    const percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
+    percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
   }
 
   const barRenderingStyles = {
