@@ -76,7 +76,6 @@ class ReviewList extends React.Component {
   render() {
     const { reviews, currentProduct, productRatings, handleGetReviews } = this.props;
     // conditional for amount of reviews to render
-    console.log(reviews);
     let list;
     if (this.state.reviewsExist !== false) {
       list = this.props.reviews.map((review, idx) => {
