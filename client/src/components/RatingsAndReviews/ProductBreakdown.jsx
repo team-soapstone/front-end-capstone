@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ProductBreakdown = ({ productRatings }) => {
-  // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
-  console.log(productRatings);
   // edge cases if no reviews for provided and quality were provided
   // check size or fit property
   let productSize;
@@ -23,6 +21,8 @@ const ProductBreakdown = ({ productRatings }) => {
   } else {
     productQuality = productRatings.characteristics.Quality.value
   }
+
+    // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
   const sizeCharacteristic = Number(productSize)
   const sizeAnalogRatio = sizeCharacteristic / 5
   const sizePositioning = sizeAnalogRatio * 95

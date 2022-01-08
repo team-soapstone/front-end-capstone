@@ -10,11 +10,22 @@ const Review = ({ review, handleMarkHelpful }) => {
       {photos.map((photo, idx) => {
         return <img
           className='reviewPhotosThumbnail'
-          key={`${reviewer_name}_idx`}
+          key={`${reviewer_name}_${idx}`}
           src={photo.url}
           alt='review photo'></img>
       })}
     </div>
+  }
+
+  let reviewHelpfulRender;
+  // get object stored in local storage of all id's that have been marked helpful by user
+  let checkBrowserStorage = JSON.parse(localStorage.getItem('reviewsMarkedHelpful'))
+  // if use cleared browser local storage
+  if (checkBrowserStorage === null) {
+    // initilize it
+    checkBrowserStorage = false;
+  } else {
+    checkBrowserStorage = JSON.parse(localStorage.getItem('reviewsMarkedHelpful'))[review_id];
   }
   return (
     <div className='reviewContainer'>
@@ -27,7 +38,8 @@ const Review = ({ review, handleMarkHelpful }) => {
       {photoRender}
       {recommend ? <p className='reviewRecommend'><i className='fas fa-check'></i> I recommend this product</p> : null}
       <p className='reviewResponse'>{response}</p>
-      <p>Helpful? {JSON.parse(localStorage.getItem('reviewsMarkedHelpful'))[review_id] ?
+      {}
+      <p>Helpful? {checkBrowserStorage ?
         <b className='reviewUnderline'>Yes</b> : <span className='reviewUnderline clickable' onClick={e => handleMarkHelpful(review_id)}>Yes</span>} ({helpfulness})</p>
     </div>
   );
