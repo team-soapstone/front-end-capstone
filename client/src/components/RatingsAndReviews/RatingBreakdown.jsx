@@ -6,7 +6,7 @@ const RatingBreakdown = ({ productRatings, handleFilter, filter }) => {
   const averageRating = Number(ratingAverage(productRatings.ratings));
   const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
     return Number(init) + Number(current);
-  });
+  }, 0);
   const percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
   const barRenderingStyles = {
     fiveStar: {'--backWidth': `${Number(productRatings.ratings['5']) * 100/ totalRating}%` },
