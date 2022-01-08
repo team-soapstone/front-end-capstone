@@ -138,7 +138,6 @@ OVERVIEW
 .ProductCategory {
   color: rgb(75, 75, 75);
   text-transform: uppercase;
-  margin-bottom: 1em;
   font-size: 130%;
 }
 
@@ -373,6 +372,7 @@ OVERVIEW
   font-weight: 600;
   font-size: 110%;
   color: rgb(65, 65, 65);
+  background-color: rgb(240, 240, 240);
   padding: 12px 50px;
   margin: 5px;
   border: 0;
@@ -394,6 +394,7 @@ OVERVIEW
   font-weight: 600;
   font-size: 110%;
   color: rgb(65, 65, 65);
+  background-color: rgb(240, 240, 240);
   width: 110px;
   padding: 12px 30px;
   margin: 5px;
@@ -492,7 +493,7 @@ OVERVIEW
 }
 
 .ShareComponent .fa-creative-commons-share {
-  color: #00112c;
+  color: #474747;
 }
 
 /*

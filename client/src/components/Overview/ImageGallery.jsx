@@ -6,7 +6,8 @@ class ImageGallery extends React.Component {
     this.state = {
       selectedImage: this.props.currentPhoto,
       selectedImageIndex: 0,
-      showModal: false
+      showModal: false,
+      nOfStylePhotos: this.props.selectedStylePhotos.length
     }
 
     this.handleCarouselNext = this.handleCarouselNext.bind(this);
@@ -20,7 +21,7 @@ class ImageGallery extends React.Component {
   
   componentDidUpdate(prevProps) {
     if (this.props.currentPhoto !== prevProps.currentPhoto) {
-      this.setState({selectedImage: this.props.currentPhoto});
+      this.setState({selectedImage: this.props.currentPhoto, nOfStylePhotos: this.props.selectedStylePhotos.length});
     }
   }
 
@@ -69,14 +70,14 @@ class ImageGallery extends React.Component {
     return(
       <div className="ImageGalleryContainer">
         <div className="ImageContainer">
-          <i className="fas fa-angle-left fa-3x" onClick={this.handlePreviousImage} />
+          <i className="fas fa-angle-left fa-3x" onClick={this.handlePreviousImage} style={{ display: this.state.nOfStylePhotos > 2 ? 'block' : 'none' }}/>
           <div className="SelectedImageContainer">
             <img className="SelectedImage" src={this.state.selectedImage} alt={this.props.selectedStyle.name} onClick={this.handleExpandImage}/>
             <div className="ImageModal" style={{ display: this.state.showModal ? 'flex' : 'none' }}>
               <img className="SelectedImageModal" src={this.state.selectedImage} alt={this.props.selectedStyle.name} onClick={this.handleCloseExpandedImage}/>
             </div>
           </div>
-          <i className="fas fa-angle-right fa-3x" onClick={this.handleNextImage} />
+          <i className="fas fa-angle-right fa-3x" onClick={this.handleNextImage} style={{ display: this.state.nOfStylePhotos > 2 ? 'block' : 'none' }}/>
         </div>
         <div className="ThumbnailContainer">
           <div className="ThumbnailCarouselContainer">
@@ -96,7 +97,7 @@ class ImageGallery extends React.Component {
             ))}
             </div>
           </div>
-          <div className="CarouselNav">
+          <div className="CarouselNav" style={{ display: this.state.nOfStylePhotos > 6 ? 'block' : 'none' }}>
             <i className="fas fa-angle-left fa-2x" onClick={this.handleCarouselPrevious} />
             <i className="fas fa-angle-right fa-2x" onClick={this.handleCarouselNext} />
           </div>
