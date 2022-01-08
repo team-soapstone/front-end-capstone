@@ -4,11 +4,17 @@ const ProductBreakdown = ({ productRatings }) => {
   // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
   console.log(productRatings);
   // edge cases if no reviews for provided and quality were provided
-  let productFit;
-  if (productRatings.characteristics.Fit === undefined) {
-    productFit = 0
+  // check size or fit property
+  let productSize;
+  // if size property doesn't exist, check fit
+  if (productRatings.characteristics.Size === undefined) {
+    if (productRatings.characteristics.Fit === undefined) {
+      productSize = 0;
+    } else {
+      productSize = productRatings.characteristics.Fit.value;
+    }
   } else {
-    productFit = productRatings.characteristics.Fit.value
+    productSize = productRatings.characteristics.Size.value;
   }
 
   let productQuality;
@@ -17,7 +23,7 @@ const ProductBreakdown = ({ productRatings }) => {
   } else {
     productQuality = productRatings.characteristics.Quality.value
   }
-  const sizeCharacteristic = Number(productFit)
+  const sizeCharacteristic = Number(productSize)
   const sizeAnalogRatio = sizeCharacteristic / 5
   const sizePositioning = sizeAnalogRatio * 95
   const qualityCharacteristic = Number(productQuality)

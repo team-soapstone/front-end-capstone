@@ -138,7 +138,7 @@ class RatingsAndReviews extends React.Component {
               filter={this.state.filter}
             />
             <br/>
-            {productRatings.characteristics.Quality.value !== null && <ProductBreakdown productRatings={productRatings}/>}
+            <ProductBreakdown productRatings={productRatings}/>
           </div>
         }
         <ReviewList
