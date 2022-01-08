@@ -27,6 +27,12 @@ class ReviewList extends React.Component {
         amountOfReviews: this.props.reviews.length
       })
     }
+    if (this.props.reviews !== prevProps.reviews && this.props.reviews.length === 0) {
+      this.setState({
+        reviewsExist: false,
+        amountOfReviews: this.props.reviews.length
+      })
+    }
   }
 
   handleSeeMoreReviews() {
@@ -61,7 +67,7 @@ class ReviewList extends React.Component {
     )
     .then((response) => {
       // save in browser's local storage if the current review was marked helpful
-      let currentMemory = JSON.parse(localStorage.getItem('reviewsMarkedHelpful')) || {}
+      let currentMemory = JSON.parse(localStorage.getItem('reviewsMarkedHelpful'))
       let reviewsMarkedHelpful = {...currentMemory, [reviewId]: true };
       localStorage.setItem('reviewsMarkedHelpful', JSON.stringify(reviewsMarkedHelpful));
     })

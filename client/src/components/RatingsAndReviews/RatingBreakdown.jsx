@@ -3,11 +3,41 @@ import Ratings from '../Ratings.jsx';
 import ratingAverage from '../util/ratingAverage.js';
 
 const RatingBreakdown = ({ productRatings, handleFilter, filter }) => {
+  // edge case - if rating does not exist within productRatings, give a default value
+  if (productRatings.ratings['1'] === undefined) {
+    productRatings.ratings['1'] = '0';
+  }
+  if (productRatings.ratings['2'] === undefined) {
+    productRatings.ratings['2'] = '0';
+  }
+  if (productRatings.ratings['3'] === undefined) {
+    productRatings.ratings['3'] = '0';
+  }
+  if (productRatings.ratings['4'] === undefined) {
+    productRatings.ratings['4'] = '0';
+  }
+  if (productRatings.ratings['5'] === undefined) {
+    productRatings.ratings['5'] = '0';
+  }
   const averageRating = Number(ratingAverage(productRatings.ratings));
   const totalRating = Object.values(productRatings.ratings).reduce((init, current) => {
     return Number(init) + Number(current);
-  });
-  const percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
+  }, 0);
+  // edge case - if no data is available for recommendations
+  if (productRatings.recommended.true === undefined) {
+    productRatings.recommended.true = 0;
+  };
+  if (productRatings.recommended.false === undefined) {
+    productRatings.recommended.false = 0;
+  };
+  const denominator = (Number(productRatings.recommended.false) + Number(productRatings.recommended.true));
+  let percentRecommended;
+  if (denominator === 0) {
+    percentRecommended = 0;
+  } else {
+    percentRecommended = Math.round((Number(productRatings.recommended.true) / (Number(productRatings.recommended.false) + Number(productRatings.recommended.true)) * 100));
+  }
+
   const barRenderingStyles = {
     fiveStar: {'--backWidth': `${Number(productRatings.ratings['5']) * 100/ totalRating}%` },
     fourStar: {'--backWidth': `${Number(productRatings.ratings['4']) * 100/ totalRating}%` },

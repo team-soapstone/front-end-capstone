@@ -1,11 +1,32 @@
 import React from 'react';
 
 const ProductBreakdown = ({ productRatings }) => {
-  // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
-  const sizeCharacteristic = Math.round(Number(productRatings.characteristics.Comfort.value))
+  // edge cases if no reviews for provided and quality were provided
+  // check size or fit property
+  let productSize;
+  // if size property doesn't exist, check fit
+  if (productRatings.characteristics.Size === undefined) {
+    if (productRatings.characteristics.Fit === undefined) {
+      productSize = 0;
+    } else {
+      productSize = productRatings.characteristics.Fit.value;
+    }
+  } else {
+    productSize = productRatings.characteristics.Size.value;
+  }
+
+  let productQuality;
+  if (productRatings.characteristics.Quality === undefined) {
+    productQuality = 0
+  } else {
+    productQuality = productRatings.characteristics.Quality.value
+  }
+
+    // for best styling, position analog from 0% to 95% padding-left (where 95% is max)
+  const sizeCharacteristic = Number(productSize)
   const sizeAnalogRatio = sizeCharacteristic / 5
   const sizePositioning = sizeAnalogRatio * 95
-  const qualityCharacteristic = Math.round(Number(productRatings.characteristics.Quality.value))
+  const qualityCharacteristic = Number(productQuality)
   const qualityAnalogRatio = qualityCharacteristic / 5
   const qualityPositioning = qualityAnalogRatio * 95
 
